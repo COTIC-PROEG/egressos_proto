@@ -2,7 +2,9 @@
 /******************************************** FORMAÇÃO ******************************************/
 function recebeBolsa() {
   var resposta = document.querySelector('input[name="bolsa"]:checked').value;
-  var checkboxes = document.querySelectorAll('input[name="tipoBolsa"]');
+  var checkboxes = document.querySelectorAll('.checkbox input[name="iniciacaoCientifica"],input[name="extensao"],input[name="iniciacaoDocencia"],input[name="residenciaPedagogica"],input[name="pet"],input[name="monitoria"],input[name="tutoria"],input[name="assitenciaEstudantil"],input[name="bolsaEstagio"],input[name="outras"]');
+
+  
     
   if (resposta === 'Não') {
     for (var i = 0; i < checkboxes.length; i++) {
@@ -13,22 +15,23 @@ function recebeBolsa() {
     for (var i = 0; i < checkboxes.length; i++) {
       checkboxes[i].disabled = false;
       checkboxes[i].nextElementSibling.style.opacity = 1;
-    
     }
   }
 }
 
 
+
 /************************************** DADOS COMPLEMENTARES *************************************/
 
 function atividadeExtraCurricular() {
-  var resposta = document.querySelector('input[name="atividadeExtra"]:checked').value;
-  var checkboxes = document.querySelectorAll('input[name="extraCurricular"]');
-  
+ var resposta = document.querySelector('input[name="atividadeExtra"]:checked').value;
+ var checkboxes = document.querySelectorAll('.checkbox input[id="iniciacaoCientifica2"],input[id="monitoria2"],input[id="pet2"],input[id="pibid2"],input[id="pibex2"],input[id="residenciaPedagogica2"],input[id="estagioNaoObrigatorio2"],input[id="atividadeComunidade2"],input[id="participouDeEventos2"],input[id="empresaJunior2"],input[id="diretorioAcademico2"],input[id="outrasAtividades2"]');
+
+    
   if (resposta === 'Não') {
     for (var i = 0; i < checkboxes.length; i++) {
       checkboxes[i].disabled = true;
-      checkboxes[i].nextElementSibling.style.opacity = 0.5;
+      checkboxes[i].nextElementSibling.style.opacity = 0.5;     
     }
   } else {
     for (var i = 0; i < checkboxes.length; i++) {

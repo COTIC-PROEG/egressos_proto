@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include_once 'dadosEgresso.php';
 definirDadosSessao();
 ?>
@@ -100,26 +100,26 @@ definirDadosSessao();
                         <div class="pergunta">
                             <p>Se sim, qual(is)?</p>
                             <div class="checkbox">
-                                <input type="checkbox" name="tipoBolsa" value="Bolsa de Iniciação Científica" disabled> 
-                                <label for="tipoBolsa1">Bolsa de Iniciação Científica</label><br>
-  								<input type="checkbox" name="tipoBolsa" value="Bolsa de Extensão" disabled>
-  								<label for="tipoBolsa2">Bolsa de Extensão</label><br>
-  								<input type="checkbox" name="tipoBolsa" value="Bolsa de Iniciação à Docência" disabled> 
-                                <label for="tipoBolsa3">Bolsa de Iniciação à Docência</label><br>
-  								<input type="checkbox" name="tipoBolsa" value="Residência Pedagógica" disabled>
-  								<label for="tipoBolsa4">Residência Pedagógica</label><br>
-  								<input type="checkbox" name="tipoBolsa" value="PET" disabled> 
-                                <label for="tipoBolsa5">PET</label><br>
-  								<input type="checkbox" name="tipoBolsa" value="Monitoria" disabled>
-  								<label for="tipoBolsa6">Monitoria</label><br>
-  								<input type="checkbox" name="tipoBolsa" value="Tutoria" disabled> 
-                                <label for="tipoBolsa7">Tutoria</label><br>
-                                <input type="checkbox" name="tipoBolsa" value="Bolsa de assistência estudantil (auxílio moradia, permanência, etc)" disabled> 
-                                <label for="tipoBolsa8">Bolsa de assistência estudantil (auxílio moradia, permanência, etc)</label><br>
-                                <input type="checkbox" name="tipoBolsa" value="Bolsa de estágio" disabled> 
-                                <label for="tipoBolsa9">Bolsa de estágio</label><br>
-                                <input type="checkbox" name="tipoBolsa" value="Outras" disabled> 
-                                <label for="tipoBolsa10">Outras</label><br>
+                                <input type="checkbox" name="iniciacaoCientifica" value="Bolsa de Iniciação Científica" disabled> 
+                                <label for="iniciacaoCientifica">Bolsa de Iniciação Científica</label><br>
+  								<input type="checkbox" name="extensao" value="Bolsa de Extensão" disabled>
+  								<label for="extensao">Bolsa de Extensão</label><br>
+  								<input type="checkbox" name="iniciacaoDocencia" value="Bolsa de Iniciação à Docência" disabled> 
+                                <label for="iniciacaoDocencia">Bolsa de Iniciação à Docência</label><br>
+  								<input type="checkbox" name="residenciaPedagogica" value="Residência Pedagógica" disabled>
+  								<label for="residenciaPedagogica">Residência Pedagógica</label><br>
+  								<input type="checkbox" name="pet" value="PET" disabled> 
+                                <label for="pet">PET</label><br>
+  								<input type="checkbox" name="monitoria" value="Monitoria" disabled>
+  								<label for="monitoria">Monitoria</label><br>
+  								<input type="checkbox" name="tutoria" value="Tutoria" disabled> 
+                                <label for="tutoria">Tutoria</label><br>
+                                <input type="checkbox" name="assitenciaEstudantil" value="Bolsa de assistência estudantil (auxílio moradia, permanência, etc)" disabled> 
+                                <label for="assitenciaEstudantil">Bolsa de assistência estudantil (auxílio moradia, permanência, etc)</label><br>
+                                <input type="checkbox" name="bolsaEstagio" value="Bolsa de estágio" disabled> 
+                                <label for="bolsaEstagio">Bolsa de estágio</label><br>
+                                <input type="checkbox" name="outras" value="Outras" disabled> 
+                                <label for="outras">Outras Bolsas</label><br>
                             </div>
                         </div>
                     </div>
@@ -134,33 +134,33 @@ definirDadosSessao();
 							<label for="atividadeExtra2">Não</label><br>
 						</div>
 					</div>	
-					<div class="pergunta">	
-						<div class= "dependente">
+					<div class="dependente">	
+						<div class= "pergunta">
 							<div class="checkbox">
-								<input type=checkbox id="iniciacaoCientifica" name="extraCurricular" disabled>
-								<label for="iniciacaoCientifica">Iniciação Científica (PIBIC e/ou outros)</label><br>
-    							<input type=checkbox id="monitoria" name="extraCurricular" disabled>
-    							<label for="monitoria">Monitoria</label><br>
-    							<input type=checkbox id="pet" name="extraCurricular" disabled>
-    							<label for="tutoria">Programa de Tutoria (PET)</label><br>
-    							<input type=checkbox id="pibid" name="extraCurricular" disabled>
-    							<label for="pibid">PIBID</label><br>
-    							<input type=checkbox id="pibex" name="extraCurricular" disabled>
-    							<label for="pibex">PIBEX</label><br>
-    							<input type=checkbox id="residenciaPedagogica" name="extraCurricular" disabled>
-    							<label for="residenciaPedagogica">Residência Pedagógica</label><br>
-    							<input type=checkbox id="estagioNaoObrigatorio" name="extraCurricular" disabled>
-    							<label for="estagioNaoObrigatorio">Estágio não obrigatório (Bolsa PROAD)</label><br>
-    							<input type=checkbox id="atividadeComunidade" name="extraCurricular" disabled>
-    							<label for="atividadeComunidade">Atividade Curricular em Comunidade</label><br>
-    							<input type=checkbox id="participouDeEventos" name="extraCurricular" disabled>
-    							<label for="participouDeEventos">Eventos: Congressos, Seminários, etc</label><br>
-    							<input type=checkbox id="empresaJunior" name="extraCurricular" disabled>
-    							<label for="empresaJunior">Empresa Júnior</label><br>
-    							<input type=checkbox id="diretorioAcademico" name="extraCurricular" disabled>
-    							<label for="diretorioAcademico">Diretório Acadêmico</label><br>
-    							<input type=checkbox id="outrasAtividades" name="extraCurricular" disabled>
-    							<label for="outrasAtividades">Outras</label><br>
+								<input type=checkbox id="iniciacaoCientifica2" name="iniciacaoCientifica2" disabled>
+								<label for="iniciacaoCientifica2">Iniciação Científica (PIBIC e/ou outros)</label><br>
+    							<input type=checkbox id="monitoria2" name="monitoria2" disabled>
+    							<label for="monitoria2">Monitoria</label><br>
+    							<input type=checkbox id="pet2" name="pet2" disabled>
+    							<label for="tutoria2">Programa de Tutoria (PET)</label><br>
+    							<input type=checkbox id="pibid2" name="pibid2" disabled>
+    							<label for="pibid2">PIBID</label><br>
+    							<input type=checkbox id="pibex2" name="pibex2" disabled>
+    							<label for="pibex2">PIBEX</label><br>
+    							<input type=checkbox id="residenciaPedagogica2" name="residenciaPedagogica2" disabled>
+    							<label for="residenciaPedagogica2">Residência Pedagógica</label><br>
+    							<input type=checkbox id="estagioNaoObrigatorio2" name="estagioNaoObrigatorio2" disabled>
+    							<label for="estagioNaoObrigatorio2">Estágio não obrigatório (Bolsa PROAD)</label><br>
+    							<input type=checkbox id="atividadeComunidade2" name="atividadeComunidade2" disabled>
+    							<label for="atividadeComunidade2">Atividade Curricular em Comunidade</label><br>
+    							<input type=checkbox id="participouDeEventos2" name="participouDeEventos2" disabled>
+    							<label for="participouDeEventos2">Eventos: Congressos, Seminários, etc</label><br>
+    							<input type=checkbox id="empresaJunior2" name="empresaJunior2" disabled>
+    							<label for="empresaJunior2">Empresa Júnior</label><br>
+    							<input type=checkbox id="diretorioAcademico2" name="diretorioAcademico2" disabled>
+    							<label for="diretorioAcademico2">Diretório Acadêmico</label><br>
+    							<input type=checkbox id="outrasAtividades2" name="outrasAtividades2" disabled>
+    							<label for="outrasAtividades2">Outras atividades</label><br>
 							</div>
 						</div>
 					</div>

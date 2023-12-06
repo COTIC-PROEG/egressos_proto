@@ -3,8 +3,8 @@
 if (isset($_POST['botaoConfirmar'])) {
     session_start();
     extract($_POST);
-    $servername = "localhost";
-    $username = "root";
+    $servername = "servidor";
+    $username = "a";
     $password = "";
     $dbname = "egressos";
     $conn = new mysqli($servername, $username, $password, $dbname);

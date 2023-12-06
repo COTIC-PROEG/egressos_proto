@@ -30,8 +30,8 @@ function getDadosEgressoFromDatabase($cpf = NULL)
 {
     if (isset($cpf)) 
     {
-        $servername = "localhost";
-        $username = "root";
+        $servername = "servidor";
+        $username = "a";
         $password = "";
         $dbname = "egressos";
         $conn = new mysqli($servername, $username, $password, $dbname);
