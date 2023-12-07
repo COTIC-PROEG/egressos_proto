@@ -84,7 +84,7 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                         <p><strong>Forma de Ingresso: </strong>
                             <span><?php echo $dados['formaIngresso']; ?></span>
                         </p><br>
-                        <p><strong>Livre Concorrência ou Cota?: </strong>
+                        <p><strong>Livre Concorrência ou Cota: </strong>
                             <span><?php echo $dados['cota']; ?></span>
                         </p><br>
                         <p><strong>Campus: </strong>
@@ -139,17 +139,17 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
 
                         <legend><strong>SITUAÇÃO PROFISSIONAL</strong></legend><br>
 
-                        <p><strong>Exerce atividade profissional atualmente?</strong>
+                        <p><strong>Exerce atividade profissional atualmente:</strong>
                             <span><?php echo $dados['inseridoNoMercado']; ?></span>
                         </p><br>
 
-                        <p><strong>Em que tipo de organização você exerce sua atividade profissional, principalmente?</strong>
+                        <p><strong>Em que tipo de organização você exerce sua atividade profissional, principalmente:</strong>
                             <span><?php echo $dados['tipoDeEmprego']; ?></span>
                         </p><br>
 
-                        <!-- <p><strong>Qual o principal motivo pelo qual você não exerce/exerceu atividade profissional na sua área de formação:</strong>
-                            <span><?php echo $dados['tipoDeEmprego']; ?></span>
-                        </p><br> -->
+                        <p><strong>Qual o principal motivo pelo qual você não exerce/exerceu atividade profissional na sua área de formação:</strong>
+                            <span><?php echo $dados['motivo']; ?></span>
+                        </p><br>
 
                         <p><strong>Depois de quanto tempo após a formatura ingressou no mundo do trabalho:</strong>
                             <span><?php echo $dados['tempoFormaturaEmprego']; ?></span>
@@ -175,39 +175,19 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                             <span><?php echo $dados['estagioContribuiuEmprego']; ?></span>
                         </p><br>
 
-                    </fieldset>
-
-                    <fieldset>
-
-                        <legend><strong>NÍVEL DE SATISFAÇÃO</strong></legend><br>
-
-                        <p><strong>Satisfação com o curso:</strong>
-                            <span><?php echo $dados['satisfacaoComCurso']; ?></span>
+                        <p><strong>Recebeu orientação, no âmbito do seu respectivo curso, para atuar no mercado de trabalho:</strong>
+                            <span><?php echo $dados['recebeuOrientacao']; ?></span>
                         </p><br>
 
-                        <?php if (!empty($dados['resumoSatisfacaoComCurso'])) : ?>
-                            <p><strong>Resumo da satisfação:</strong> </p>
-                            <span><?php echo $dados['resumoSatisfacaoComCurso']; ?></span>
-                            </p><br>
-                        <?php endif; ?>
-                        <p><strong>Recomendaria o curso para outra pessoa:</strong>
-                            <span><?php echo $dados['recomendaCurso']; ?></span>
-                        </p><br>
-
-                        <?php if (!empty($dados['resumoRecomendacaoCurso'])) : ?>
-                            <p><strong>Justificativa: </strong></p>
-                            <span><?php echo $dados['resumoRecomendacaoCurso']; ?></span>
-                            </p><br>
-                        <?php endif; ?>
-
                     </fieldset>
+
 
                     <fieldset>
 
                         <legend><strong>RELAÇÃO COM A UNIVERSIDADE</strong></legend><br>
 
                         <p><strong>Tem mantido algum contato com a UFPA após a formatura da graduação?</strong>
-                            <span><?php echo $dados['']; ?></span>
+                            <span><?php echo $dados['relacaoUfpa']; ?></span>
                         </p><br>
 
                         <!-- <p><strong>Participa de eventos acadêmicos na UFPA:</strong>
@@ -254,28 +234,34 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                         <legend><strong>SATISFAÇÃO COM A INSTITUIÇÃO E COM O CURSO</strong></legend>
 
                         <P><strong>Nível de satisfação com a UFPA:</strong>
-                            <span><?php echo $dados[''] ?></span>
+                            <span><?php echo $dados['satisfacaoComUFPA'] ?></span>
                         </P><br>
 
-                        <P><strong>Grau de satisfação com a UFPA:</strong>
-                            <span><?php echo $dados[''] ?></span>
+                        <P><strong>Grau de satisfação geral com a UFPA:</strong>
+                            <span><?php echo $dados['grauSatisfacaoComUFPA'] ?></span>
                         </P><br>
 
-                        <P><strong>Na sua opinião em que aspecto o curso tem que melhorar?</strong>
-                            <span><?php echo $dados[''] ?></span>
+                        <P><strong>Nível de satisfação com o curso de graduação concluído:</strong>
+                            <span><?php echo $dados['satisfacaoCurso'] ?></span>
                         </P><br>
 
-                        <P><strong>Descrição de melhoria para o curso:</strong>
-                            <span><?php echo $dados[''] ?></span>
+                        <P><strong>Em que aspecto o curso tem que melhorar:</strong>
+                            <span><?php echo $dados['melhorarApectos'] ?></span>
                         </P><br>
+
+                        <?php if (!empty($dados['outrosApectos'])) : ?>
+                            <p><strong>Descrição após ter marcado a opção "outros" na pergunta anterior:</strong> </p>
+                            <span><?php echo $dados['outrosApectos']; ?></span>
+                            </p><br>
+                        <?php endif; ?>
 
                         <P><strong>Você recomendaria seu curso para outra pessoa?</strong>
-                            <span><?php echo $dados[''] ?></span>
+                            <span><?php echo $dados['recomendacao'] ?></span>
                         </P><br>
 
-                        <?php if (!empty($dados[''])) : ?>
+                        <?php if (!empty($dados['comentaRecomendacao'])) : ?>
                             <p><strong>Comentario sobre a pergunta anterior:</strong> </p>
-                            <span><?php echo $dados['']; ?></span>
+                            <span><?php echo $dados['comentaRecomendacao']; ?></span>
                             </p><br>
                         <?php endif; ?>
                     </fieldset>
