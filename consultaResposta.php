@@ -90,7 +90,7 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                         <p><strong>Campus: </strong>
                             <span><?php echo $dados['campus']; ?></span>
                         </p><br>
-                        <p><strong>Obteve bolsa durante o curso?: </strong>
+                        <p><strong>Obteve bolsa durante o curso: </strong>
                             <span><?php echo $dados['bolsa']; ?></span>
                         </p><br>
                         <?php if (!empty($dados['tipoBolsa'])) : ?>
@@ -115,7 +115,7 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                             <span><?php echo $dados['atividadeRemunerada']; ?></span>
                         </p><br>
 
-                        <p><strong>Participou de Mobilidade Academica?</strong>
+                        <p><strong>Participou de Mobilidade Academica:</strong>
                             <span><?php echo $dados['mobilidadeAcademica']; ?></span>
                         </p><br>
 
@@ -179,6 +179,10 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                             <span><?php echo $dados['recebeuOrientacao']; ?></span>
                         </p><br>
 
+                        <p><strong>Resumo da situação profissional:</strong>
+                            <span><?php echo $dados['resumoSituacaoProfissional']; ?></span>
+                        </p><br>
+
                     </fieldset>
 
 
@@ -186,47 +190,9 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
 
                         <legend><strong>RELAÇÃO COM A UNIVERSIDADE</strong></legend><br>
 
-                        <p><strong>Tem mantido algum contato com a UFPA após a formatura da graduação?</strong>
+                        <p><strong>Tem mantido algum contato com a UFPA após a formatura da graduação:</strong>
                             <span><?php echo $dados['relacaoUfpa']; ?></span>
                         </p><br>
-
-                        <!-- <p><strong>Participa de eventos acadêmicos na UFPA:</strong>
-                            <span><?php echo $dados['participaDeEventos']; ?></span>
-                        </p><br>
-
-                        <?php if (!empty($dados['resumoEventosAtuais'])) : ?>
-                            <p><strong>Resumo do(s) evento(s) que participa: </strong></p>
-                            <span><?php echo $dados['resumoEventosAtuais']; ?></span>
-                            </p><br>
-                        <?php endif; ?>
-
-                        <p><strong>Participa de grupo de pesquisa ou projetos de extensão na UFPA:</strong>
-                            <span><?php echo $dados['participaDeProjeto']; ?></span>
-                        </p><br>
-
-                        <?php if (!empty($dados['resumoProjetosAtuais'])) : ?>
-                            <p><strong>Resumo do(s) projeto(s) que participa:</strong> </p>
-                            <span><?php echo $dados['resumoProjetosAtuais']; ?></span>
-                            </p><br>
-                        <?php endif; ?>
-
-                        <p><strong>Participa de algum curso na UFPA:</strong>
-                            <span><?php echo $dados['participaDeCurso']; ?></span>
-                        </p><br>
-
-                        <?php if (!empty($dados['resumoCursosAtuais'])) : ?>
-                            <p><strong>Resumo do(s) curso(s):</strong> </p>
-                            <span><?php echo $dados['resumoCursosAtuais']; ?></span>
-                            </p><br>
-                        <?php endif; ?>
-
-                        <p><strong>Atividades que você gostaria de participar: </strong></p>
-                        <span><?php echo $dados['resumoAtividadesInteresse']; ?></span>
-                        </p><br>
-
-                        <p><strong>Sugestão para o questionário:</strong> </p>
-                        <span><?php echo $dados['resumoSugestaoQuestionario']; ?></span>
-                        </p><br> -->
 
                     </fieldset>
 
@@ -255,7 +221,7 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                             </p><br>
                         <?php endif; ?>
 
-                        <P><strong>Você recomendaria seu curso para outra pessoa?</strong>
+                        <P><strong>Você recomendaria seu curso para outra pessoa:</strong>
                             <span><?php echo $dados['recomendacao'] ?></span>
                         </P><br>
 
