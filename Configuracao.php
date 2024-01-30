@@ -1,23 +1,23 @@
 <?php
 
 class Configuracao{
-    private $hostServer = "localhost/egressos";
-    private $userDataBase = "root";
+    private $nameServer = "localhost/egressos";
+    private $userName = "root";
     private $nameDataBase = "egressos";
     private $hostDataBase = "127.0.0.1";
-    private $passwordDataBase = "";
+    private $password = "";
 
 
     public function getHostAplication() {
-		return 'http://'.$this->hostServer.'/';
+		return 'http://'.$this->nameServer.'/';
 	}
 
     public function getUserDataBase() {
-		return $this->userDataBase;
+		return $this->userName;
 	}
 
     public function getHostServer() {
-		return $this->hostServer;
+		return $this->nameServer;
 	}
 
     public function getDns() {
@@ -25,7 +25,7 @@ class Configuracao{
 	}
 
 	public function getPasswordDataBase() {
-		return $this->passwordDataBase;
+		return $this->password;
 	}
 
 	public function getNameDataBase() {
@@ -34,10 +34,6 @@ class Configuracao{
 
 	public function getHostDataBase() {
 		return $this->hostDataBase;
-	}
-
-	public function getDebug() {
-		return $this->debug;
 	}
 }
 
