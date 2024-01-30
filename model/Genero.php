@@ -8,7 +8,7 @@ class Genero{
         return $this->idGenero;
     }
 
-    public function getTipo(){
+    public function getTipoGenero(){
         return $this->tipo;
     }
 }
