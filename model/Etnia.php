@@ -1,14 +1,14 @@
 <?php
 
 class Etnia{
-    private $idEtnia;
-    private $tipo;
+    private int $idEtnia;
+    private string $tipo;
 
-    public function getIdEtnia(){
+    public function getIdEtnia(): int{
         return $this->idEtnia;
     }
     
-    public function getTipoEtnia(){
+    public function getTipoEtnia(): string{
         return $this->tipo;
     }
 

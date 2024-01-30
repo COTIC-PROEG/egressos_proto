@@ -1,10 +1,10 @@
 <?php
 
 abstract class Pessoa{
-    private $idPessoa;
-    private $nome;
-    private $email;
-    private $dataNascimento;
+    private int $idPessoa;
+    private string $nome;
+    private string $email;
+    private DateTime $dataNascimento;
     private Genero $genero;
     private Etnia $etnia;
 
@@ -15,27 +15,27 @@ abstract class Pessoa{
         $this->etnia = $etnia;
     }
 
-    public function getIdPessoa(){
+    public function getIdPessoa(): int{
         return $this->idPessoa;
     }
 
-    public function getNome(){
+    public function getNome(): string{
         return $this->nome;
     }
 
-    public function getEmail(){
+    public function getEmail(): string{
         return $this->email;
     }
 
-    public function getDataNascimento(){
+    public function getDataNascimento(): DateTime{
         return $this->dataNascimento;
     }
 
-    public function getEtnia(){
+    public function getEtnia(): Etnia{
         return $this->etnia;
     }
 
-    public function getGenero(){
+    public function getGenero(): Genero{
         return $this->genero;
     }
 

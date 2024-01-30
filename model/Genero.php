@@ -1,14 +1,14 @@
 <?php
 
 class Genero{
-    private $idGenero;
-    private $tipo;
+    private int $idGenero;
+    private string $tipo;
 
-    public function getIdGenero(){
+    public function getIdGenero(): int{
         return $this->idGenero;
     }
 
-    public function getTipoGenero(){
+    public function getTipoGenero(): string{
         return $this->tipo;
     }
 }

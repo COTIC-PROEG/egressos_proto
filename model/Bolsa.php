@@ -1,14 +1,14 @@
 <?php
 
 class Bolsa{
-    private $idBolsa;
-    private $tipo;
+    private int $idBolsa;
+    private string $tipo;
 
-    public function getIdBolsa(){
+    public function getIdBolsa(): int{
         return $this->idBolsa;
     }
 
-    public function getTipoBolsa(){
+    public function getTipoBolsa(): string{
         return $this->tipo;
     }
 }
