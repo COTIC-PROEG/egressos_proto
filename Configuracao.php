@@ -5,7 +5,7 @@ class Configuracao{
     private $userDataBase = "root";
     private $nameDataBase = "egressos";
     private $hostDataBase = "127.0.0.1";
-    private $passwordDatabase = "";
+    private $passwordDataBase = "";
 
 
     public function getHostAplication() {
