@@ -4,7 +4,9 @@ class Egresso extends Pessoa{
     private int $idEgresso;
     private DateTime $anoIngresso;
     private DateTime $anoFormatura;
-    private array $bolsa;
+    private Ingresso $ingresso;
+    private array $bolsas;
+    private array $atividades;
 
     function __construct($nome, $email, $dataNascimento, $etnia) {
         parent::__construct($nome, $email, $dataNascimento, $etnia);
@@ -22,9 +24,18 @@ class Egresso extends Pessoa{
         return $this->anoFormatura;
     }
 
-    public function getBolsa(): array{
-        return $this->bolsa;
+    public function getIngresso(): Ingresso{
+        return $this->ingresso;
     }
+
+    public function getBolsas(): array{
+        return $this->bolsas;
+    }
+
+    public function getAtividades(): array{
+        return $this->atividades;
+    }
+    
 }
 
 ?>
