@@ -5,6 +5,8 @@ class Pessoa{
     private $nome;
     private $email;
     private $dataNascimento;
+    private Genero $genero;
+    private Etnia $etnia;
 
     public function getIdPessoa(){
         return $this->idPessoa;
