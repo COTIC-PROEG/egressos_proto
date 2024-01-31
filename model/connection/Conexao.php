@@ -1,7 +1,7 @@
 <?php
-
+include_once '../interfaces/IConexao.php';
 abstract class Conexao implements IConexao{
-    private mysqli $conexao;
+    private $conexao;
     private string $server;
     private string $user;
     private string $password;
@@ -14,7 +14,7 @@ abstract class Conexao implements IConexao{
         $this->dataBase = $dataBase;
     }
 
-    public function getConexao(): mysqli{
+    public function getConexao(){
         return $this->conexao;
     }
 
