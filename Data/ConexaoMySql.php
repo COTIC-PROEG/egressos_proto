@@ -8,7 +8,7 @@ class ConexaoMySql extends Conexao{
     public function open(){
         $conn = new mysqli(parent::getServer(), parent::getUser(), parent::getPassword(), parent::getDataBase());
         if ($conn->connect_errno) {
-            throw new RuntimeException('mysqli connection error: ' . $conn->connect_error);
+            throw new RuntimeException('Erro ao iniciar uma conexão: ' . $conn->connect_error);
         }
         parent::setConexao($conn);
     }
