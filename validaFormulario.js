@@ -1,5 +1,5 @@
 function envioSucesso(event) {
-    var campos = document.querySelectorAll('textarea:not([name="resumoRecomendacaoCurso"]):not([name="resumoSatisfacaoComCurso"])');
+
     var selects = document.querySelectorAll('select');
     var radioDivs = document.querySelectorAll('.radio');
     var todosPreenchidos = true;
@@ -27,14 +27,7 @@ function envioSucesso(event) {
         }
     });
 
-    campos.forEach(function(campo) {
-        if (campo.value.trim() === '' && !campo.disabled) {
-            campo.classList.add('nao_preenchido');
-            todosPreenchidos = false;
-        } else {
-            campo.classList.remove('nao_preenchido');
-        }
-    });
+
 
     selects.forEach(function(select) {
         if (select.selectedIndex === 0) {

@@ -1,4 +1,4 @@
-﻿* {
+﻿﻿* {
     box-sizing: border-box;
     margin: 0rem;
     padding: 0rem;
@@ -124,7 +124,7 @@ button:hover {
 
 .elements {
     padding: 20px;
-    text-align: center;
+    text-align: left;
 }
 
 .form{
@@ -135,7 +135,7 @@ button:hover {
 }
 
 #borda{
-    margin: 5.85rem 0rem;
+    margin: 6.35rem 35rem;
     padding: 5rem;
     border-radius: 5px;
     border: none;
@@ -162,7 +162,14 @@ button:hover {
 
 .cpf {
     height: 40px;
-    width: 100%;
+    width: 91%;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid rgb(209, 204, 204);
+}
+.dataNascimento {
+    height: 40px;
+    width: 69%;
     border: none;
     border-radius: 5px;
     border: 1px solid rgb(209, 204, 204);
@@ -181,6 +188,15 @@ button:hover {
 .submeter:hover {
     cursor: pointer;
     background-color: rgb(20, 135, 212) ;
+}
+
+@media (width < 1500px){
+    .form{
+        margin: 50px;
+    }
+    #borda{
+        margin: 50px;
+    }
 }
 
 @media (width < 800px){
