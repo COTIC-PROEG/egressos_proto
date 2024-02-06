@@ -5,6 +5,7 @@ include_once '../connection/ConexaoMySql.php';
 abstract class AbstractDao implements IDao{
     private $config;
     private $conexaoMySql;
+    protected $sql;
     public function __construct(){
         $this->config = new Configuracao();
         $this->conexaoMySql = new ConexaoMySql($this->config->getServer(), 
@@ -16,6 +17,16 @@ abstract class AbstractDao implements IDao{
     public function getConexaoMySql(){
         return $this->conexaoMySql;
     }
+
+    public function getDaoMySql()
+	{
+		return $this->conexaoMySql;
+	}
+
+	public function get(){
+		return $this->getDaoMySql()->query($this->sql);
+    }
+
 }
 
 ?>
