@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include_once 'dadosEgresso.php';
 definirDadosSessao();
 ?>
@@ -74,7 +74,6 @@ definirDadosSessao();
 					<legend><strong>DADOS ACADÊMICOS</strong></legend>
 					<div class="dados">
 						<p>Curso: <span><?php echo $_SESSION['curso'];?></span></p>
-						<p>Unidade Acadêmica: <span><?php echo $_SESSION['unidadeAcademica'];?></span></p>
 						<p>Campus: <span><?php echo $_SESSION['campus'];?></span></p>
 						<p>Ano de Ingresso: <span><?php echo $_SESSION['anoIngresso'];?></span></p>
 						<p>Ano de Conclusão: <span><?php echo $_SESSION['anoFormatura'];?></span></p>
