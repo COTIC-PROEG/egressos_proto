@@ -1,5 +1,4 @@
 <?php
-
 function dataDiferenca($dataNascimento = NULL)
 {
     if (isset($dataNascimento))
@@ -47,7 +46,7 @@ function getDadosEgressoFromDatabase($cpf = NULL)
         $conn = new mysqli($servername, $username, $password, $dbname);
         //$sql = "select * from egresso where cpf = '" . $cpf . "'";
         $cpf = ltrim($cpf, '0');
-        $sql = "select * from egresso where cpf = '" . $cpf . "'";
+        $sql = "select * from pessoa where cpf = '" . $cpf . "'";
         
         if (!$conn) die("Connection failed: " . mysqli_connect_error());
         

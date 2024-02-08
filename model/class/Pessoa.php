@@ -1,8 +1,9 @@
 <?php
 
-abstract class Pessoa{
+class Pessoa{
     private int $idPessoa;
     private string $nome;
+    private string $cpf;
     private string $email;
     private DateTime $dataNascimento;
     private Genero $genero;
@@ -21,6 +22,10 @@ abstract class Pessoa{
 
     public function getNome(): string{
         return $this->nome;
+    }
+
+    public function getCpf(): string{
+        return $this->cpf;
     }
 
     public function getEmail(): string{
