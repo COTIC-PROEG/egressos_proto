@@ -39,9 +39,6 @@ definirDadosSessao();
 					<legend><strong>DADOS PESSOAIS</strong></legend>
 					<div class="dados">
 						<p>Nome: <span><?php echo $_SESSION['nome'];?></span></p>
-						<!--<p>Data de preenchimento do formulário: <span><?php //echo $_SESSION['dataResposta'];?></span></p>-->
-						<!--<p>Email: <span><?php //echo $_SESSION['email'];?></span></p>-->
-						<!--<p>2. Data de Nascimento: <span><?php //echo $_SESSION['dataNascimento'];?></span></p>-->
 						<!--<p>Idade: <span><?php //echo $_SESSION['idade'];?></span></p>-->
 						<p>Faixa Etária: <span><?php echo $_SESSION['faixaEtaria'];?></span></p>
 						<p>Email: <span><input size=26 placeholder="Digite seu e-mail" type="email" id="email" name="email" required></span></p>
@@ -323,7 +320,7 @@ definirDadosSessao();
 					</div>	
 						
 						<div class="pergunta">
-							<p>15. Você estava preparado para ingressar no mundo do trabalho quando se formou?</p>
+							<p>14. Você estava preparado para ingressar no mundo do trabalho quando se formou?</p>
 							<div class="radio">
 								<input type="radio" id="preparado1" name="preparado" value="Sim, muito">
 								<label for="preparado1">Sim, muito</label><br>
@@ -338,7 +335,7 @@ definirDadosSessao();
 						
 						
 						<div class="pergunta">
-							<p>16. As temáticas e/ou assuntos abordados nas várias disciplinas cursadas	tiveram utilidade para o exercício profissional?</p>
+							<p>15. As temáticas e/ou assuntos abordados nas várias disciplinas cursadas	tiveram utilidade para o exercício profissional?</p>
 							<div class="radio">
 								<input type="radio" id="utilidade1" name="utilidade" value="Sim, muito">
 								<label for="utilidade1">Sim, muito</label><br>
@@ -352,7 +349,7 @@ definirDadosSessao();
 						</div>
 					<div class="dependente7">
 						<div class="pergunta">
-							<p>17. O estágio curricular facilitou/colaborou com a inserção no mundo do trabalho?</p>
+							<p>16. O estágio curricular facilitou/colaborou com a inserção no mundo do trabalho?</p>
 							<div class="radio">
 								<input type="radio" id="estagioContribuiuEmprego1" name="estagioContribuiuEmprego" value="Sim, muito">
 								<label for="estagioContribuiuEmprego1">Sim, muito</label><br>
@@ -367,7 +364,7 @@ definirDadosSessao();
 					</div>
 
 					<div class="pergunta">
-						<p>18. Recebeu orientação, no âmbito do seu respectivo curso, para atuar no mercado de trabalho?</p>
+						<p>17. Recebeu orientação, no âmbito do seu respectivo curso, para atuar no mercado de trabalho?</p>
 						<div class="radio">
 							<input type="radio" id="recebeuOrientacao1" name="recebeuOrientacao" value="Sim">
 							<label for="recebeuOrientacao1">Sim</label><br>
@@ -376,7 +373,7 @@ definirDadosSessao();
 						</div>
 					</div>
 
-					<p>19. Comente:</p>
+					<p>18. Comente:</p>
 
 					<textarea name="resumoSituacaoProfissional" cols=40 rows=6 
 					placeholder="Descreva mais sobre sua situação profissional"
@@ -389,7 +386,7 @@ definirDadosSessao();
 				<legend><strong>RELAÇÃO COM A INSTITUIÇÃO</strong></legend>
 				<!-- --------------------------------------------------------------- -->
 				<div class="pergunta">
-						<p>20. Você tem mantido algum contato com a UFPA após a formatura da graduação?</p>
+						<p>19. Você tem mantido algum contato com a UFPA após a formatura da graduação?</p>
 						<div class="radio">
 							<input type="radio" id="relacaoUfpa1" name="relacaoUfpa" value="Sim, participo de eventos acadêmicos promovidos pela UFPA">
 							<label for="relacaoUfpa1">Sim, participo de eventos acadêmicos promovidos pela UFPA</label><br>
@@ -415,7 +412,7 @@ definirDadosSessao();
 					<legend><strong>NÍVEL DE SATISFAÇÃO COM A UFPA E COM O CURSO</strong></legend>
 					<!-- --------------------------------------------------------------- -->
 					<div class="pergunta">
-						<p>21. Marque a alternativa referente ao nível de satisfação com a UFPA:</p>
+						<p>20. Marque a alternativa referente ao nível de satisfação com a UFPA:</p>
 						<div class="radio">
 							<input type="radio" id="satisfacaoComUFPA1" name="satisfacaoComUFPA" value="Muito Satisfeito">
 							<label for="satisfacaoComUFPA1">Muito Satisfeito</label><br>
@@ -431,7 +428,7 @@ definirDadosSessao();
 					
 
 					<div class="pergunta">
-						<p>22. Marque a alternativa referente ao nível de satisfação com o curso de graduação concluído:</p>
+						<p>21. Marque a alternativa referente ao nível de satisfação com o curso de graduação concluído:</p>
 						<div class="radio">
 							<input type="radio" id="satisfacaoCurso1" name="satisfacaoCurso" value="Muito Satisfeito">
 							<label for="satisfacaoCurso1">Muito Satisfeito</label><br>
@@ -445,7 +442,7 @@ definirDadosSessao();
 					</div class="pergunta">
 					
 					<div class="pergunta">
-						<p>23. Na sua opinião, em quais aspectos o curso poderia melhorar?</p>
+						<p>22. Na sua opinião, em quais aspectos o curso poderia melhorar?</p>
 						<div class="checkbox">
 							<input type="checkbox" id="melhorarApectos1" name="melhorarApectos1" value="Recursos didáticos-pedagógico" onclick="melhorar()">
 							<label for="melhorarApectos1">Recursos didáticos-pedagógico</label><br>
@@ -474,13 +471,13 @@ definirDadosSessao();
 					
 					<div class="dependente6">
 						<div class="pergunta">
-							<p>24. Caso tenha marcado a opção “Outros” na pergunta anterior, descreva:</p>
+							<p>23. Caso tenha marcado a opção “Outros” na pergunta anterior, descreva:</p>
 							<textarea name="outrosApectos" cols=40 rows=6 placeholder="Descreva outros aspectos" disabled></textarea>
 						</div>						
 					</div>
 					
 					<div class="pergunta">
-						<p>25. Você recomendaria seu curso para outra pessoa?</p>
+						<p>24. Você recomendaria seu curso para outra pessoa?</p>
 						<div class="radio">
 							<input type="radio" id="recomendacao1" name="recomendacao" value="Sim">
 							<label for="recomendacao1">Sim</label><br>
@@ -490,7 +487,7 @@ definirDadosSessao();
 					</div class="pergunta">
 					
 					<div class="pergunta">
-							<p>26. Comente sobre a pergunta anterior:</p>
+							<p>25. Comente sobre a pergunta anterior:</p>
 							<textarea name="comentaRecomendacao" cols=40 rows=6 placeholder="Comente sobre a recomendação"></textarea>
 					</div>
 					

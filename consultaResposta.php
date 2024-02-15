@@ -72,7 +72,7 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
 
                     <fieldset>
 
-                        <legend><strong>FORMAÇÃO</strong></legend><br>
+                        <legend><strong>DADOS ACADÊMICOS</strong></legend><br>
 
                         <p>Curso: 
                             <span><?php echo $dados['curso']; ?></span>
@@ -86,7 +86,7 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                         <p>Forma de Ingresso: 
                             <span><?php echo $dados['formaIngresso']; ?></span>
                         </p><br>
-                        <p>Livre Concorrência ou Cota: 
+                        <p>Cota: 
                             <span><?php echo $dados['cota']; ?></span>
                         </p><br>
                         <p>Unidade Acadêmica: 
@@ -95,101 +95,87 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                         <p>Campus: 
                             <span><?php echo $dados['campus']; ?></span>
                         </p><br>
-                        <p>Obteve bolsa durante o curso: 
+                        <p>1. Obteve bolsa durante o curso? 
                             <span><?php echo $dados['bolsa']; ?></span>
                         </p><br>
                         <?php if (!empty($dados['tipoBolsa'])) : ?>
-                            <p>Resumo da bolsa: 
+                            <p>2. Se sim, qual(is)? 
                             <span><?php echo $dados['tipoBolsa']; ?></span>
                             </p><br>
                         <?php endif; ?>
 
-                    </fieldset>
-
-                    <fieldset>
-
-                        <legend><strong>DADOS COMPLEMENTARES</strong></legend><br>
+                    
 
                         <?php if (!empty($dados['atividadesExtracurriculares'])) : ?>
-                            <p>Realizou atividades acadêmicas extracurriculares durante o curso:
+                            <p>3. Participou de atividades acadêmicas extracurriculares durante o curso?
                                 <span><?php echo $dados['atividadesExtracurriculares']; ?></span>
                             </p><br>
                         <?php endif; ?>
                         <?php if (!empty($dados['tipoAtividadeExtra'])) : ?>
-                            <p>Atividades acadêmicas extracurriculares durante o curso:
+                            <p>4. Se sim, qual(is)?
                                 <span><?php echo $dados['tipoAtividadeExtra']; ?></span>
                             </p><br>
                         <?php endif; ?>
 
-                        <p>Atividade remunerada fora da Universidade:
+                        <p>5. Durante o curso de graduação, você exerceu atividade remunerada, incluindo Estágio não obrigatório?
                             <span><?php echo $dados['atividadeRemunerada']; ?></span>
                         </p><br>
 
-                        <p>Participou de Mobilidade Academica:
+                        <p>6. Durante o curso de graduação participou de algum programa voltado à mobilidade acadêmica?
                             <span><?php echo $dados['mobilidadeAcademica']; ?></span>
                         </p><br>
 
-                        <p>Curso de Pós-Graduação: 
+                        <p>7. Após a graduação, qual o nível do último curso de pós-graduação realizado e/ou em andamento? 
                             <span><?php echo $dados['cursoPosGraduacao']; ?></span>
                         </p><br>
 
-                        <?php if (!empty($dados['situacaoCursoPosGraduacao'] &&
-                            $dados['situacaoCursoPosGraduacao'])) : ?>
-                            <p>Situação do curso: 
-                                <span><?php echo $dados['situacaoCursoPosGraduacao']; ?></span>
-                            </p><br>
-                            <p>Pós-Gradução na UFPA:
-                                <span><?php echo $dados['posGraduacaoUfpa']; ?></span>
-                            </p><br>
-                        <?php endif; ?>
-
+						<p>8. Em qual instituição você cursou ou está cursando o último curso de pós-graduação que se refere a pergunta anterior? 
+                            <span><?php echo $dados['posGraduacaoUfpa']; ?></span>
+                        </p><br>
+                        
                     </fieldset>
 
                     <fieldset>
 
                         <legend><strong>SITUAÇÃO PROFISSIONAL</strong></legend><br>
 
-                        <p>Exerce atividade profissional atualmente:
+                        <p>9. Você está exercendo atividade profissional atualmente?
                             <span><?php echo $dados['inseridoNoMercado']; ?></span>
                         </p><br>
 
-                        <p>Em que tipo de organização você exerce sua atividade profissional, principalmente:
+                        <p>10. Em que tipo de organização você exerce sua atividade profissional, principalmente?
                             <span><?php echo $dados['tipoDeEmprego']; ?></span>
                         </p><br>
 
-                        <p>Qual o principal motivo pelo qual você não exerce/exerceu atividade profissional na sua área de formação:
+                        <p>11. Qual o principal motivo pelo qual você não exerce/exerceu atividade profissional na sua área de formação?
                             <span><?php echo $dados['motivo']; ?></span>
                         </p><br>
 
-                        <p>Depois de quanto tempo após a formatura ingressou no mundo do trabalho:
+                        <p>12. Depois de quanto tempo após a formatura ingressou no mundo do trabalho?
                             <span><?php echo $dados['tempoFormaturaEmprego']; ?></span>
                         </p><br>
 
-                        <p>Qual sua faixa salarial:
+                        <p>13. Qual sua faixa salarial (caso esteja inserido no mundo do trabalho)?
                             <span><?php echo $dados['faixaSalarial']; ?></span>
                         </p><br>
 
-                        <p>Recebeu orientação durante o curso de graduação para atuar no mundo do trabalho:
-                            <span><?php echo $dados['recebeuOrientacao']; ?></span>
-                        </p><br>
-
-                        <p>Você estava preparado para ingressar no mundo do trabalho quando se formou:
+                        <p>14. Você estava preparado para ingressar no mundo do trabalho quando se formou?
                             <span><?php echo $dados['preparado']; ?></span>
                         </p><br>
 
-                        <p>As temáticas e/ou assuntos abordados nos componentes curriculares cursados durante a graduação contribuíram para o exercício profissional:
+                        <p>15. As temáticas e/ou assuntos abordados nas várias disciplinas cursadas	tiveram utilidade para o exercício profissional?
                             <span><?php echo $dados['utilidade']; ?></span>
                         </p><br>
 
-                        <p>O estágio curricular facilitou/colaborou com a inserção no mundo do trabalho:
+                        <p>16. O estágio curricular facilitou/colaborou com a inserção no mundo do trabalho?
                             <span><?php echo $dados['estagioContribuiuEmprego']; ?></span>
                         </p><br>
 
-                        <p>Recebeu orientação, no âmbito do seu respectivo curso, para atuar no mercado de trabalho:
+                        <p>17. Recebeu orientação, no âmbito do seu respectivo curso, para atuar no mercado de trabalho?
                             <span><?php echo $dados['recebeuOrientacao']; ?></span>
                         </p><br>
 
-                        <p>Resumo da situação profissional:
+                        <p>18. Comentario sobre a pergunta anterior:
                             <span><?php echo $dados['resumoSituacaoProfissional']; ?></span>
                         </p><br>
 
@@ -198,41 +184,41 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
 
                     <fieldset>
 
-                        <legend><strong>RELAÇÃO COM A UNIVERSIDADE</strong></legend><br>
+                        <legend><strong>RELAÇÃO COM A INSTITUIÇÃO</strong></legend><br>
 
-                        <p>Tem mantido algum contato com a UFPA após a formatura da graduação:
+                        <p>19. Você tem mantido algum contato com a UFPA após a formatura da graduação?
                             <span><?php echo $dados['relacaoUfpa']; ?></span>
                         </p><br>
 
                     </fieldset>
 
                     <fieldset>
-                        <legend><strong>SATISFAÇÃO COM A INSTITUIÇÃO E COM O CURSO</strong></legend>
+                        <legend><strong>NÍVEL DE SATISFAÇÃO COM A UFPA E COM O CURSO</strong></legend>
 
-                        <P>Nível de satisfação com a UFPA:
+                        <P>20. Nível de satisfação com a UFPA:
                             <span><?php echo $dados['satisfacaoComUFPA'] ?></span>
                         </P><br>
 
-                        <P>Nível de satisfação com o curso de graduação concluído:
+                        <P>21. Nível de satisfação com o curso de graduação concluído:
                             <span><?php echo $dados['satisfacaoCurso'] ?></span>
                         </P><br>
 
-                        <P>Em que aspecto o curso tem que melhorar:
+                        <P>22. Na sua opinião, em quais aspectos o curso poderia melhorar?
                             <span><?php echo $dados['melhorarApectos'] ?></span>
                         </P><br>
 
                         <?php if (!empty($dados['outrosApectos'])) : ?>
-                            <p>Descrição após ter marcado a opção "outros" na pergunta anterior: </p>
+                            <p>23. Caso tenha marcado a opção “Outros” na pergunta anterior, descreva: </p>
                             <span><?php echo $dados['outrosApectos']; ?></span>
                             </p><br>
                         <?php endif; ?>
 
-                        <P>Você recomendaria seu curso para outra pessoa:
+                        <P>24. Você recomendaria seu curso para outra pessoa?
                             <span><?php echo $dados['recomendacao'] ?></span>
                         </P><br>
 
                         <?php if (!empty($dados['comentaRecomendacao'])) : ?>
-                            <p>Comentario sobre a pergunta anterior: </p>
+                            <p>25. Comentario sobre a pergunta anterior: </p>
                             <span><?php echo $dados['comentaRecomendacao']; ?></span>
                             </p><br>
                         <?php endif; ?>
