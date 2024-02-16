@@ -1,5 +1,7 @@
 <?php 
 # include_once 'dadosEgresso.php';
+include_once '../../controller/PessoaController.php'
+$pessoaController = new PessoaController();
 ?>
 <!DOCTYPE html>
 <html>
