@@ -1,6 +1,9 @@
 <?php
 include_once '../model/class/Pessoa.php'
 class PessoaController(){
+    public function cadastrarPessoa(){
+        if (isset($_POST['cpf']) && isset($_POST['dataNascimento'])){}
+    }
     public function acessarFormulario(){
         if (isset($_POST['cpf']) && isset($_POST['dataNascimento'])){
         $resultadoData = validarDataNascimento($_POST['dataNascimento'],$_POST['cpf']);
