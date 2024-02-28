@@ -9,7 +9,12 @@ class Pessoa{
     private Genero $genero;
     private Etnia $etnia;
 
-   
+    function __construct($nome, $email, $dataNascimento, $etnia) {
+        $this->nome = $nome;
+        $this->email = $email;
+        $this->dataNascimento = $dataNascimento;
+        $this->etnia = $etnia;
+    }    
 
     public function getIdPessoa(): int{
         return $this->idPessoa;

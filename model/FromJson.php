@@ -2,7 +2,7 @@
 include 'class/Pessoa.php';
 include 'class/Etnia.php';
 
-abstract class FromJson{
+class FromJson{
     // private string $ultimaMatricula;
     // private string $nome;
     // private string $cpf;
@@ -17,7 +17,7 @@ abstract class FromJson{
     // private string $unidadeAcademica;
     // private string $campus;
 
-    public static $ultimaMatricula;
+    private static $ultimaMatricula = null;
 
     public static function getUltimaMatricula($cpf){
         $url = 'https://sagitta.ufpa.br/sagitta/ws/consultaegresso/'.$cpf.'?login=diegolisboa';
@@ -28,8 +28,8 @@ abstract class FromJson{
             {
                 if ($ultima_matricula->anoFormatura > $ultimoAnoIngresso)
                 {
-                    static::$ultimaMatricula = $ultima_matricula;
-                    $ultimoAnoIngresso = static::$ultimaMatricula->anoFormatura; 
+                    self::$ultimaMatricula = $ultima_matricula;
+                    $ultimoAnoIngresso = self::$ultimaMatricula->anoFormatura; 
                 }
                 
             }
@@ -39,11 +39,11 @@ abstract class FromJson{
     }
 
     public static function getPessoaFromJson(){ 
-        $pessoa = new Pessoa(static::$ultimaMatricula->nome, 
-                            static::$ultimaMatricula->cpf, 
-                            static::$ultimaMatricula->email, 
-                            static::formataData(static::$ultimaMatricula->dataNascimento), 
-                            new Etnia(static::$ultimaMatricula->raca)
+        $pessoa = new Pessoa(self::$ultimaMatricula->nome, 
+                            self::$ultimaMatricula->cpf, 
+                            self::$ultimaMatricula->email, 
+                            self::formataData(self::$ultimaMatricula->dataNascimento), 
+                            new Etnia(self::$ultimaMatricula->raca)
                         );
         return $pessoa;
     }
