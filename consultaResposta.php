@@ -1,6 +1,5 @@
-﻿<?php
+<?php
 include_once 'dadosEgresso.php';
-definirDadosSessao();
 
 $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
 ?>
@@ -19,17 +18,24 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
 
     <!-------------------------------- Iní­cio da area de cabeçalho ------------------------------------>
     <header>
-        <div id="navbar">
-            <!---<div class="resp">--->
-            <a href="https://egressos.ufpa.br/" class="logo">
-                <img src="images/logo_ufpa.png">
-            </a>
-            <h1>
-                <strong>Consulta de Egressos UFPA</strong>
-            </h1>
-            <button class="return"><strong><a href="validaCpf.php"><p style="font-size: larger;" class="link">🢀</p></a></strong></button>
-        </div>
-    </header>
+		<div id="navbar">
+			<div class="resp">
+				<h1>
+					<strong>Pesquisa de Egressos da UFPA</strong>
+				</h1>
+			</div>
+		</div>
+
+		<div id="barra">
+			<a href="https://egressos.ufpa.br/">
+				<img class="logo" src="images/logo_ufpa.png">
+			</a>
+			<button class="return" type="button"><a style="font-size: larger;" class="link"
+						href="validaCpf.php">🢀</a></button>
+			</a>
+		</div>
+		
+	</header>
     <!-------------------------------- Fim da area de cabeçalho ------------------------------------------>
 
     <!------------------------ Início da área de consulta de resposta ---------------------------------->
@@ -57,7 +63,6 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                         <p>Data de Nascimento: 
                             <span><?php echo $dados['dataNascimento']; ?></span>
                         </p><br>
-
                         <p>Faixa Etária: 
                             <span> <?php echo $dados['faixaEtaria']; ?></span>
                         </p><br>                       
@@ -198,8 +203,12 @@ $dados = getDadosEgressoFromDatabase($_SESSION['cpf']);
                         <P>20. Nível de satisfação com a UFPA:
                             <span><?php echo $dados['satisfacaoComUFPA'] ?></span>
                         </P><br>
+<<<<<<< HEAD
 
                         <P>21. Nível de satisfação com o curso de graduação concluído:
+=======
+                        <P>Nível de satisfação com o curso de graduação concluído:
+>>>>>>> 81efb02edd8722e209b935cd010881eabd702ca1
                             <span><?php echo $dados['satisfacaoCurso'] ?></span>
                         </P><br>
 

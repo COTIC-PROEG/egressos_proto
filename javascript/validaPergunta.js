@@ -24,8 +24,8 @@ function recebeBolsa() {
 /************************************** DADOS COMPLEMENTARES *************************************/
 
 function atividadeExtraCurricular() {
- var resposta = document.querySelector('input[name="atividadeExtracurriculares"]:checked').value;
- var checkboxes = document.querySelectorAll('.checkbox input[id="iniciacaoCientifica2"],input[id="monitoria2"],input[id="pet2"],input[id="pibid2"],input[id="pibex2"],input[id="residenciaPedagogica2"],input[id="estagioNaoObrigatorio2"],input[id="atividadeComunidade2"],input[id="participouDeEventos2"],input[id="empresaJunior2"],input[id="diretorioAcademico2"],input[id="outrasAtividades2"],input[id="tutoria2"]');
+  var resposta = document.querySelector('input[name="atividadeExtracurriculares"]:checked').value;
+  var checkboxes = document.querySelectorAll('.checkbox input[id="iniciacaoCientifica2"],input[id="monitoria2"],input[id="pet2"],input[id="pibid2"],input[id="pibex2"],input[id="residenciaPedagogica2"],input[id="estagioNaoObrigatorio2"],input[id="atividadeComunidade2"],input[id="participouDeEventos2"],input[id="empresaJunior2"],input[id="diretorioAcademico2"],input[id="outrasAtividades2"],input[id="tutoria2"]');
 
     
   if (resposta === 'Não') {
