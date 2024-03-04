@@ -8,7 +8,11 @@ class EgressoController{
             if(isset($_POST['cpf']) && isset($_POST['dataNascimento'])){
                 $cpf = $_POST['cpf'];
                 $dataNascimento = $_POST['dataNascimento'];
-                FromJson::getUltimaMatricula($cpf);
+                $status = FromJson::getUltimaMatricula($cpf);
+                if($status == 200){
+                    $pessoa = FromJson::getPessoaFromJson();
+                    echo "<script>alert('Instanciando egresso');</script>";
+                }
             }
             
 

@@ -9,9 +9,9 @@ class Pessoa{
     private Genero $genero;
     private Etnia $etnia;
 
-    function __construct($nome, $email, $dataNascimento, $etnia) {
+    function __construct($nome, $cpf, $dataNascimento, $etnia) {
         $this->nome = $nome;
-        $this->email = $email;
+        $this->cpf = $cpf;
         $this->dataNascimento = $dataNascimento;
         $this->etnia = $etnia;
     }    

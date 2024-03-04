@@ -25,38 +25,34 @@ class FromJson{
 
     public static function getUltimaMatricula($cpf){
         $url = 'https://sagitta.ufpa.br/sagitta/ws/consultaegresso/'.$cpf.'?login=diegolisboa';
-        //$json = json_decode(file_get_contents($url));
-
+        
         $client = new Client();
         $response = $client->request('GET',$url);
         $status = $response->getStatusCode();
-
-            if($status == 200){
-                echo '<html>teste</html>';
-                $json = $response->getBody();
-                if ($json){
-                    $ultimoAnoIngresso = 0;
-                    foreach ($json as $ultima_matricula)
-                    {
-                        if ($ultima_matricula->anoFormatura > $ultimoAnoIngresso)
-                        {
-                            self::$ultimaMatricula = $ultima_matricula;
-                            $ultimoAnoIngresso = self::$ultimaMatricula->anoFormatura; 
-                        }
-                        
+        
+        if($status == 200){
+            $json = $response->getBody();
+            $json = json_decode($json);
+            if ($json){
+                $ultimoAnoIngresso = 0;
+                foreach ($json as $ultima_matricula){
+                    if ($ultima_matricula->anoFormatura > $ultimoAnoIngresso){
+                        self::$ultimaMatricula = $ultima_matricula;
+                        $ultimoAnoIngresso = self::$ultimaMatricula->anoFormatura; 
                     }
-                }else{
-                    #disparar exceção
+                    
                 }
-            }else if ($response->getStatusCode() == 404){
-                echo "<script>alert('Egresso não encontrado na base de dados');</script>";
+            }else{
+                echo "<script>alert('Egresso não encontrado');</script>";
             }
+        }
+
+        return $status;
     }
 
     public static function getPessoaFromJson(){ 
         $pessoa = new Pessoa(self::$ultimaMatricula->nome, 
                             self::$ultimaMatricula->cpf, 
-                            self::$ultimaMatricula->email, 
                             self::formataData(self::$ultimaMatricula->dataNascimento), 
                             new Etnia(self::$ultimaMatricula->raca)
                         );
