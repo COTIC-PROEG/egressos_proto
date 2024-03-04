@@ -27,13 +27,21 @@ class Pessoa{
     public function getCpf(): string{
         return $this->cpf;
     }
+    public function setCpf($cpf): void{
+        $this->cpf = $cpf;
+    }
 
     public function getEmail(): string{
         return $this->email;
     }
 
+
     public function getDataNascimento(): DateTime{
         return $this->dataNascimento;
+    }
+
+    public function setDataNascimento(DateTime $dataNascimento): void{
+        $this->dataNascimento = $dataNascimento;
     }
 
     public function getEtnia(): Etnia{

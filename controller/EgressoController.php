@@ -1,5 +1,6 @@
 <?php
 include_once '../../model/FromJson.php';
+include_once 'PessoaController.php';
 
 
 class EgressoController{
@@ -11,6 +12,8 @@ class EgressoController{
                 $status = FromJson::getUltimaMatricula($cpf);
                 if($status == 200){
                     $pessoa = FromJson::getPessoaFromJson();
+                    $pessoaController = new PessoaController();
+                    $pessoaController->cadastraPessoa($pessoa);
                     echo "<script>alert('Instanciando egresso');</script>";
                 }
             }
@@ -18,10 +21,6 @@ class EgressoController{
 
         }
 
-        // if(isset($_POST['cpf']) && isset($_POST['dataNascimento'])){
-        //     FromJson::getultimaMatricula($_POST['cpf']);
-        //     $pessoa = FromJson::getPessoaFromJson();
-        // }
     }
 
     public function acessarFormulario(){
