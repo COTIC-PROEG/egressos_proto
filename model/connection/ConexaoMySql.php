@@ -1,5 +1,5 @@
 <?php
-
+include_once 'Conexao.php';
 class ConexaoMySql extends Conexao{
 
     public function __construct($server, $user, $password, $dataBase) {

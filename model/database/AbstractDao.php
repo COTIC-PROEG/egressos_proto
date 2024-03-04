@@ -1,7 +1,8 @@
 <?php
-include_once '../interfaces/IDao.php';
+
+include_once '../../model/interfaces/IDao.php';
 include_once '../../config/Configuracao.php';
-include_once '../connection/ConexaoMySql.php';
+include_once '../../model/connection/ConexaoMySql.php';
 abstract class AbstractDao implements IDao{
     private $config;
     private $conexaoMySql;

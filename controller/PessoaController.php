@@ -1,13 +1,15 @@
 <?php
 // include_once '../model/FromJson.php';
 include_once '../../model/class/Pessoa.php';
+include_once '../../model/database/PessoaDao.php';
 
 class PessoaController{
     
     public function cadastraPessoa(Pessoa $pessoa){
         $pessoa->setCpf($this->formataCPF($pessoa->getCpf()));
         $pessoa->setDataNascimento($this->formataDataParaSql($pessoa->getDataNascimento()));
-        
+        $pessoaDao = new PessoaDao();
+        $pessoaDao->insertPessoa($pessoa);
     }
 
     private function formataCPF(string $cpf){

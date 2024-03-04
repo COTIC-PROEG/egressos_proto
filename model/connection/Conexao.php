@@ -1,5 +1,5 @@
 <?php
-include_once '../interfaces/IConexao.php';
+include_once '../../model/interfaces/IConexao.php';
 abstract class Conexao implements IConexao{
     private $conexao;
     private string $server;

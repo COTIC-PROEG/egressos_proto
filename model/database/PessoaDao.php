@@ -1,5 +1,6 @@
 <?php
-include_once '../class/Pessoa.php';
+include_once 'AbstractDao.php';
+#include_once '../class/Pessoa.php';
 class PessoaDao extends AbstractDao{
     public function insertPessoa(Pessoa $pessoa){
         $conn = $this->getConexaoMySql();
