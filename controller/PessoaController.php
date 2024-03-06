@@ -26,7 +26,6 @@ class PessoaController{
         $formato = 'Y-m-d';
         $data = $data->format('Y-m-d');
         $data = DateTime::createFromFormat($formato, $data);
-        echo var_dump($data);
         return $data;
     }
 

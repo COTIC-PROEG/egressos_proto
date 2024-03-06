@@ -14,11 +14,8 @@ class EgressoController{
                     $pessoa = FromJson::getPessoaFromJson();
                     $pessoaController = new PessoaController();
                     $pessoaController->cadastraPessoa($pessoa);
-                    echo "<script>alert('Instanciando egresso');</script>";
                 }
             }
-            
-
         }
 
     }

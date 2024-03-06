@@ -24,9 +24,6 @@ abstract class AbstractDao implements IDao{
 		return $this->conexaoMySql;
 	}
 
-	public function get(){
-		return $this->getDaoMySql()->query($this->sql);
-    }
 
 }
 

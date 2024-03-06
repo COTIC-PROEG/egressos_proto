@@ -4,13 +4,19 @@ include_once 'AbstractDao.php';
 class PessoaDao extends AbstractDao{
     public function insertPessoa(Pessoa $pessoa){
         $conn = $this->getConexaoMySql();
-        $conn->open();
-        $sql = "INSERT INTO pessoa (nome, cpf, email, dataNascimento)
-        VALUES ({$pessoa->getNome()}, {$pessoa->getCpf()}, {$pessoa->getEmail()}, {$pessoa->getDataNascimento()});";
-        $result = $conn->query($sql);
-        $conn->close();
-        return $result;
+        try{
+            $conn->open();
+            echo var_dump($pessoa->getNome(), $pessoa->getCpf(), $pessoa->getDataNascimento()->format('Y-m-d'));
+            $sql = "INSERT INTO pessoa (nome, cpf, dataNascimento)
+            VALUES ({$pessoa->getNome()}, {$pessoa->getCpf()}, {$pessoa->getDataNascimento()->format('Y-m-d')});";
+            $conn->getConexao()->query($sql);
+            $conn->close();
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
     }
+
+    public function get(){}
 }
 
 ?>

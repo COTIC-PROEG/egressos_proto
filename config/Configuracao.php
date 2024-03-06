@@ -1,7 +1,7 @@
 <?php
 
 class Configuracao{
-    private $server = "localhost/egressos";
+	private $server = "localhost";
     private $user = "root";
     private $dataBase = "egressos";
     private $port = "127.0.0.1";
@@ -9,7 +9,7 @@ class Configuracao{
 
 
     public function getHostAplication() {
-		return 'http://'.$this->server.'/';
+		return $this->server.'/';
 	}
 
     public function getUser() {

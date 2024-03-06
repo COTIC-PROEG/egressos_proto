@@ -7,6 +7,7 @@ class ConexaoMySql extends Conexao{
     }
     public function open(){
         $conn = new mysqli(parent::getServer(), parent::getUser(), parent::getPassword(), parent::getDataBase());
+        echo var_dump(parent::getServer(), parent::getUser(), parent::getPassword(), parent::getDataBase());
         if ($conn->connect_errno) {
             throw new RuntimeException('Erro ao iniciar uma conexão: ' . $conn->connect_error);
         }
@@ -14,15 +15,16 @@ class ConexaoMySql extends Conexao{
     }
 
     public function close(){
-        if(parent::getConexao()){
+        if(!parent::getConexao()){
             throw new RuntimeException('Não há instanciada uma conexão mysql: ' . mysqli_error(parent::getConexao()));
         }
         parent::getConexao()->close();
     }
 
-    public function query($sql){
-        
+    public function getConexao(){
+        return parent::getConexao();
     }
+
 }
 
 ?>
