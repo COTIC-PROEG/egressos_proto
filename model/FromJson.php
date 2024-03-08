@@ -43,7 +43,8 @@ class FromJson{
                     
                 }
             }else{
-                echo "<script>alert('Egresso não encontrado');</script>";
+                $status = 404;
+                return $status;
             }
         }
 

@@ -14,6 +14,8 @@ class EgressoController{
                     $pessoa = FromJson::getPessoaFromJson();
                     $pessoaController = new PessoaController();
                     $pessoaController->cadastraPessoa($pessoa);
+                }else if($status == 404){
+                    echo "<script>alert('Egresso não encontrado');</script>";
                 }
             }
         }
