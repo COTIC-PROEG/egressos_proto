@@ -23,10 +23,6 @@ abstract class AbstractDao implements IDao{
         return $this->conexaoMySql;
     }
 
-    public function getDaoMySql(){
-		return $this->conexaoMySql;
-	}
-
     private function openConnection(){
         try {
             $this->conexaoMySql->open();
