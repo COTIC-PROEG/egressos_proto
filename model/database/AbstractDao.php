@@ -75,7 +75,7 @@ abstract class AbstractDao implements IDao{
         return $result;
     }
 
-    public function executeSql($sql){
+    public function insert($sql){
         $this->openConnection();
         $result = $this->executeStmt($sql);
         $this->closeConection();

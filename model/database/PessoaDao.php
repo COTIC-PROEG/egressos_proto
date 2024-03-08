@@ -9,7 +9,7 @@ class PessoaDao extends AbstractDao{
         $this->setParams($pessoa->getCpf());
         $this->setParams($pessoa->getDataNascimento()->format('Y-m-d'));
 
-        $result = $this->executeSql($sql);
+        $result = $this->insert($sql);
         if($result){
             echo "Pessoa cadastrada com sucesso!";
         }else{
