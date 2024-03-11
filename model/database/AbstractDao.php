@@ -41,9 +41,9 @@ abstract class AbstractDao implements IDao{
         }
     }
 
-    private function executeStmt($sql){
+    private function prepareStmt($sql){
         $this->stmt = $this->conexaoMySql->getConexao()->prepare($sql);
-        return $this->stmtTypes();
+        $this->stmtTypes();
     }
 
     private function stmtTypes(){
@@ -59,7 +59,7 @@ abstract class AbstractDao implements IDao{
                 $types .= 'b';
             }
         }
-        return $this->blindParams($types);
+        $this->blindParams($types);
     }
 
     private function blindParams($types){
@@ -70,23 +70,22 @@ abstract class AbstractDao implements IDao{
             throw new ExeptionParameters("Não há parametros registrados");
         }
         $this->stmt->bind_param($types, ...$this->parameters);
-        $result = $this->stmt->execute();
-        $this->stmt->close();
-        return $result;
+        $this->stmt->execute();
     }
 
-    public function insert($sql){
+    public function execute($sql){
         $this->openConnection();
-        $result = $this->executeStmt($sql);
+        $this->prepareStmt($sql);
+        $result = $this->stmt;
+        $this->stmt->close();
         $this->closeConection();
+        unset($this->parameters);
         return $result;
     }
 
     public function setParams($param){
         $this->parameters[] = $param;
     }
-
-
 }
 
 ?>

@@ -16,6 +16,8 @@ class EgressoController{
                     $pessoaController->cadastraPessoa($pessoa);
                 }else if($status == 404){
                     echo "<script>alert('Egresso não encontrado');</script>";
+                }else if($status > 500){
+                    echo "<script>alert('Erro ao tentar consultar o banco de dados');</script>";
                 }
             }
         }

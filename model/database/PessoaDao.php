@@ -1,6 +1,7 @@
 <?php
 include_once 'AbstractDao.php';
-#include_once '../class/Pessoa.php';
+include_once '../../model/class/Pessoa.php';
+
 class PessoaDao extends AbstractDao{
 
     public function insertPessoa(Pessoa $pessoa){
@@ -9,12 +10,9 @@ class PessoaDao extends AbstractDao{
         $this->setParams($pessoa->getCpf());
         $this->setParams($pessoa->getDataNascimento()->format('Y-m-d'));
 
-        $result = $this->insert($sql);
-        if($result){
-            echo "Pessoa cadastrada com sucesso!";
-        }else{
-            echo "Erro ao cadastrar pessoa!";
-        }
+        $result = $this->execute($sql);
+        return $result;
+
     }
 
     public function get(){}

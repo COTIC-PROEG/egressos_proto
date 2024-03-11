@@ -2,14 +2,18 @@
 // include_once '../model/FromJson.php';
 include_once '../../model/class/Pessoa.php';
 include_once '../../model/database/PessoaDao.php';
+include_once 'EtniaController.php';
 
 class PessoaController{
     
     public function cadastraPessoa(Pessoa $pessoa){
+        $etniaController = new EtniaController();
         $pessoa->setCpf($this->formataCPF($pessoa->getCpf()));
         $pessoa->setDataNascimento($this->formataDataParaSql($pessoa->getDataNascimento()));
         $pessoaDao = new PessoaDao();
-        $pessoaDao->insertPessoa($pessoa);
+        $result = $pessoaDao->insertPessoa($pessoa);
+        $etniaController->cadastraEtniaPessoa($pessoa->getEtnia());
+        
     }
 
     private function formataCPF(string $cpf){
