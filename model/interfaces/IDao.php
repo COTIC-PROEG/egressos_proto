@@ -1,7 +1,7 @@
 <?php
 
 interface IDao{
-    public function get();
+    // public function get();
 }
 
 ?>

@@ -6,9 +6,9 @@ include_once '../../model/connection/ConexaoMySql.php';
 include_once '../../model/error/ExeptionParameters.php';
 abstract class AbstractDao implements IDao{
     private $config;
-    private $conexaoMySql;
+    protected $conexaoMySql;
     protected $sql;
-    private $stmt;
+    protected $stmt;
     private $parameters = array();
 
     public function __construct(){
@@ -19,11 +19,7 @@ abstract class AbstractDao implements IDao{
         $this->config->getDataBase());
     }
 
-    public function getConexaoMySql(){
-        return $this->conexaoMySql;
-    }
-
-    private function openConnection(){
+    protected function openConnection(){
         try {
             $this->conexaoMySql->open();
         }
@@ -32,7 +28,7 @@ abstract class AbstractDao implements IDao{
         }
     }
 
-    private function closeConection(){
+    protected function closeConection(){
         try {
             $this->conexaoMySql->close();
         }
@@ -41,8 +37,20 @@ abstract class AbstractDao implements IDao{
         }
     }
 
-    private function prepareStmt($sql){
-        $this->stmt = $this->conexaoMySql->getConexao()->prepare($sql);
+    protected function executeQuery(){
+        if (!$this->stmt){
+			throw new ExeptionParameters("Não há stmt");
+        }
+        return $this->executeStmt();
+    }
+
+    private function executeStmt(){
+        return  $this->stmt->execute();		
+    }
+
+    protected function prepareStmt($sql){
+        $this->sql = $sql;
+        $this->stmt = $this->conexaoMySql->getConexao()->prepare($this->sql);
         $this->stmtTypes();
     }
 
@@ -70,22 +78,20 @@ abstract class AbstractDao implements IDao{
             throw new ExeptionParameters("Não há parametros registrados");
         }
         $this->stmt->bind_param($types, ...$this->parameters);
-        $this->stmt->execute();
-    }
-
-    public function execute($sql){
-        $this->openConnection();
-        $this->prepareStmt($sql);
-        $result = $this->stmt;
-        $this->stmt->close();
-        $this->closeConection();
         unset($this->parameters);
-        return $result;
-    }
+    } 
 
     public function setParams($param){
         $this->parameters[] = $param;
     }
+
+    protected function closeStmt() {
+        if (!$this->stmt){
+			throw new ExeptionParameters("Não há stmt");
+        }
+        $this->stmt->close();
+    }
+
 }
 
 ?>

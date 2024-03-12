@@ -1,8 +1,8 @@
 <?php
-include_once 'AbstractDao.php';
+include_once 'Dao.php';
 include_once '../../model/class/Pessoa.php';
 
-class PessoaDao extends AbstractDao{
+class PessoaDao extends Dao{
 
     public function insertPessoa(Pessoa $pessoa){
         $sql = "INSERT INTO pessoa(nome, cpf, dataNascimento) VALUES(?, ?, ?)";
@@ -11,7 +11,9 @@ class PessoaDao extends AbstractDao{
         $this->setParams($pessoa->getDataNascimento()->format('Y-m-d'));
 
         $result = $this->execute($sql);
-        return $result;
+        if($result){
+            return $this->getStmtId();   
+        }
 
     }
 

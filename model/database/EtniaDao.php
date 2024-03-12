@@ -1,18 +1,28 @@
 <?php
 
 include_once '../../model/class/Etnia.php';
-class EtniaDao extends AbstractDao{
+class EtniaDao extends Dao{
 
-    public function getEtniaDao($etnia){
-        $sql = "SELECT * FROM etnia WHERE tipo = ?";
+    public function getEtniaDaoByName($etnia){
+        $sql = "SELECT idEtnia FROM etnia WHERE tipo = ?";
         $this->setParams($etnia->getTipoEtnia());
-        return $this->execute($sql);
+        $this->execute($sql);
+        // return $this->getStmtId();
     }
 
     public function insertEtnia($etnia){
         $sql = "INSERT INTO etnia(tipo) VALUES(?)";
         $this->setParams($etnia->getTipoEtnia());
-        return $this->execute($sql);
+        $this->execute($sql);
+        return $this->getStmtId(); 
+    }
+
+    public function insertEtniaPessoa($idPessoa, $idEtnia){
+        $sql = "INSERT INTO pessoa_etnia(idPessoa, idEtnia) VALUES(?, ?)";
+        $this->setParams($idPessoa);
+        $this->setParams($idEtnia);
+        $this->execute($sql);
+        $this->getStmtId();
     }
 
     public function get(){}

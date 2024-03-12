@@ -11,8 +11,8 @@ class PessoaController{
         $pessoa->setCpf($this->formataCPF($pessoa->getCpf()));
         $pessoa->setDataNascimento($this->formataDataParaSql($pessoa->getDataNascimento()));
         $pessoaDao = new PessoaDao();
-        $result = $pessoaDao->insertPessoa($pessoa);
-        $etniaController->cadastraEtniaPessoa($pessoa->getEtnia());
+        $idNovaPessoa = $pessoaDao->insertPessoa($pessoa);
+        $etniaController->cadastraEtniaPessoa($idNovaPessoa, $pessoa->getEtnia());
         
     }
 

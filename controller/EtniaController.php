@@ -7,15 +7,16 @@ class EtniaController{
         $etniaDao = new EtniaDao();
     }
 
-    public function cadastraEtniaPessoa($etnia){
+    public function cadastraEtniaPessoa($idPessoa, $etnia){
         $etniaDao = new EtniaDao();
-        $result = $etniaDao->getEtniaDao($etnia);
-        if($result->num_rows > 0){
-            $obj = $result->fetch_object();
-            echo var_dump($obj->tipo);
+        $idEtnia = $etniaDao->getEtniaDaoByName($etnia);
+        echo var_dump($idEtnia);
+        if($idEtnia){
+            $etniaDao->insertEtniaPessoa($idPessoa, $idEtnia);
         }else{
             echo "<script>alert('cadastrando etnia');</script>";
-            $etniaDao->insertEtnia($etnia);
+            $idNovaEtnia = $etniaDao->insertEtnia($etnia);
+            $etniaDao->insertEtniaPessoa($idPessoa, $idNovaEtnia);
         }
     }
 }

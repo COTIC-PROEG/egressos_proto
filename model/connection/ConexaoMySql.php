@@ -20,6 +20,10 @@ class ConexaoMySql extends Conexao{
         parent::getConexao()->close();
     }
 
+    public function queryConexao($sql){
+        return parent::getConexao()->query($sql);
+    }
+
 }
 
 ?>
