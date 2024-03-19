@@ -9,9 +9,9 @@ class EtniaController{
 
     public function cadastraEtniaPessoa($idPessoa, $etnia){
         $etniaDao = new EtniaDao();
-        $idEtnia = $etniaDao->getEtniaDaoByName($etnia);
-        echo var_dump($idEtnia);
-        if($idEtnia){
+        $array = $etniaDao->getEtniaDaoByName($etnia);
+        if($array){
+            $idEtnia = $array[0];
             $etniaDao->insertEtniaPessoa($idPessoa, $idEtnia);
         }else{
             echo "<script>alert('cadastrando etnia');</script>";

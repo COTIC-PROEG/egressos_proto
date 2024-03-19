@@ -13,7 +13,7 @@ class Dao extends AbstractDao{
         return $this->executeQuery();
 	}
 
-    private function close(){
+    public function close(){
         $this->stmt->close();
         $this->closeConection();
     }
@@ -22,10 +22,6 @@ class Dao extends AbstractDao{
         $id = $this->conexaoMySql->getConexao()->insert_id;
         $this->close();
         return $id;
-    }
-
-    public function getId(){
-        $rows = $this->conexaoMySql->getConexao()->query();
     }
 
     public function get(){
