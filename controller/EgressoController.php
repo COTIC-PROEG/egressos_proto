@@ -1,9 +1,10 @@
 <?php
 include_once '../../model/FromJson.php';
+include_once '../../model/database/EgressoDao.php';
 include_once 'PessoaController.php';
 
 
-class EgressoController{
+class EgressoController extends PessoaController{
     public function cadastrarEgresso(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(isset($_POST['cpf']) && isset($_POST['dataNascimento'])){
@@ -11,9 +12,11 @@ class EgressoController{
                 $dataNascimento = $_POST['dataNascimento'];
                 $status = FromJson::getUltimaMatricula($cpf);
                 if($status == 200){
-                    $pessoa = FromJson::getPessoaFromJson();
-                    $pessoaController = new PessoaController();
-                    $pessoaController->cadastraPessoa($pessoa);
+                    $egresso = FromJson::getEgressoFromJson();
+                    $pessoa = $egresso->getPessoaEgresso();
+                    $idPessoa = $this->cadastraPessoa($pessoa);
+                    $egressoDao = new EgressoDao();
+                    $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
                 }else if($status == 404){
                     echo "<script>alert('Egresso não encontrado');</script>";
                 }else if($status > 500){

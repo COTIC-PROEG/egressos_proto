@@ -1,6 +1,7 @@
 <?php
 include 'class/Pessoa.php';
 include 'class/Etnia.php';
+include 'class/Egresso.php';
 
 require_once '../../vendor/autoload.php';
 
@@ -51,13 +52,15 @@ class FromJson{
         return $status;
     }
 
-    public static function getPessoaFromJson(){ 
-        $pessoa = new Pessoa(self::$ultimaMatricula->nome, 
+    public static function getEgressoFromJson(){ 
+        $egresso = new Egresso(self::$ultimaMatricula->nome, 
                             self::$ultimaMatricula->cpf, 
                             self::formataData(self::$ultimaMatricula->dataNascimento), 
-                            new Etnia(self::$ultimaMatricula->raca)
+                            new Etnia(self::$ultimaMatricula->raca),
+                            self::$ultimaMatricula->anoIngresso,
+                            self::$ultimaMatricula->anoFormatura
                         );
-        return $pessoa;
+        return $egresso;
     }
 
     private function formataData($data){

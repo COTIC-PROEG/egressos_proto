@@ -14,7 +14,6 @@ class EtniaController{
             $idEtnia = $array[0];
             $etniaDao->insertEtniaPessoa($idPessoa, $idEtnia);
         }else{
-            echo "<script>alert('cadastrando etnia');</script>";
             $idNovaEtnia = $etniaDao->insertEtnia($etnia);
             $etniaDao->insertEtniaPessoa($idPessoa, $idNovaEtnia);
         }

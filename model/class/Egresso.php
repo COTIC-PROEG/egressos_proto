@@ -1,27 +1,29 @@
 <?php
-
+include_once 'Pessoa.php';
 class Egresso extends Pessoa{
     private int $idEgresso;
-    private DateTime $anoIngresso;
-    private DateTime $anoFormatura;
+    private string $anoIngresso;
+    private string $anoFormatura;
     private Ingresso $ingresso;
     private PosGraduacao $posGraduacao;
     private array $bolsas;
     private array $atividades;
 
-    function __construct($nome, $email, $dataNascimento, $etnia) {
-        parent::__construct($nome, $email, $dataNascimento, $etnia);
+    function __construct($nome, $cpf, $dataNascimento, $etnia, $anoIngresso, $anoFormatura) {
+        parent::__construct($nome, $cpf, $dataNascimento, $etnia);
+        $this->anoIngresso = $anoIngresso;
+        $this->anoFormatura = $anoFormatura;
     }
 
     public function getIdEgresso(): int{
         return $this->idEgresso;
     }
 
-    public function getAnoIngresso(): DateTime{
+    public function getAnoIngresso(): string{
         return $this->anoIngresso;
     }
 
-    public function getAnoFormatura(): DateTime{
+    public function getAnoFormatura(): string{
         return $this->anoFormatura;
     }
 
@@ -39,6 +41,11 @@ class Egresso extends Pessoa{
 
     public function getPosGraduacao(): PosGraduacao{
         return $this->posGraduacao;
+    }
+
+    public function getPessoaEgresso(){
+        $pessoa = new Pessoa($this->getNome(), $this->getCpf(), $this->getDataNascimento(), $this->getEtnia());
+        return $pessoa;
     }
     
 }

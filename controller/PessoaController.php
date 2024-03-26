@@ -6,14 +6,14 @@ include_once 'EtniaController.php';
 
 class PessoaController{
     
-    public function cadastraPessoa(Pessoa $pessoa){
+    protected function cadastraPessoa(Pessoa $pessoa){
         $etniaController = new EtniaController();
         $pessoa->setCpf($this->formataCPF($pessoa->getCpf()));
-        $pessoa->setDataNascimento($this->formataDataParaSql($pessoa->getDataNascimento()));
+        //$pessoa->setDataNascimento($this->formataDataParaSql($pessoa->getDataNascimento()));
         $pessoaDao = new PessoaDao();
         $idNovaPessoa = $pessoaDao->insertPessoa($pessoa);
         $etniaController->cadastraEtniaPessoa($idNovaPessoa, $pessoa->getEtnia());
-        
+        return $idNovaPessoa;
     }
 
     private function formataCPF(string $cpf){
@@ -26,7 +26,7 @@ class PessoaController{
         return $cpf;
     }
 
-    private function formataDataParaSql(DateTime $data){
+    protected function formataDataParaSql(DateTime $data){
         $formato = 'Y-m-d';
         $data = $data->format('Y-m-d');
         $data = DateTime::createFromFormat($formato, $data);
