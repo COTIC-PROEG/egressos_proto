@@ -7,7 +7,6 @@ class IngressoDao extends Dao{
         $this->execute($sql);
         $rows = array();
         $result = $this->stmt->get_result();
-        echo(var_dump($result));
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
             foreach ($row as $r) {
                 $rows[] = $r;

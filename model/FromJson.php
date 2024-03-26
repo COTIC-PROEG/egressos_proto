@@ -72,7 +72,6 @@ class FromJson{
     }
 
     public static function getFormaIngresso(){
-        var_dump(self::$ultimaMatricula->formaIngresso);
         return self::$ultimaMatricula->formaIngresso;
     }
 }
