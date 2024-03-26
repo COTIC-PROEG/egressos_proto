@@ -2,6 +2,7 @@
 include_once '../../model/FromJson.php';
 include_once '../../model/database/EgressoDao.php';
 include_once 'PessoaController.php';
+include_once 'IngressoController.php';
 
 
 class EgressoController extends PessoaController{
@@ -16,11 +17,9 @@ class EgressoController extends PessoaController{
                     $pessoa = $egresso->getPessoaEgresso();
                     $idPessoa = $this->cadastraPessoa($pessoa);
                     $egressoDao = new EgressoDao();
-                    $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
-                }else if($status == 404){
-                    echo "<script>alert('Egresso não encontrado');</script>";
-                }else if($status > 500){
-                    echo "<script>alert('Erro ao tentar consultar o banco de dados');</script>";
+                    $ingressoController = new IngressoController();
+                    $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
+                    $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
                 }
             }
         }

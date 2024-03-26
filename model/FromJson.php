@@ -44,9 +44,11 @@ class FromJson{
                     
                 }
             }else{
-                $status = 404;
-                return $status;
+                echo "<script>alert('Egresso não encontrado');</script>";
+                return 404;
             }
+        }else if($status > 500){
+            echo "<script>alert('Erro ao tentar consultar o banco de dados');</script>";
         }
 
         return $status;
@@ -67,6 +69,11 @@ class FromJson{
         $formato = 'd/m/Y';
         $dataFormatada = DateTime::createFromFormat($formato, $data);
         return $dataFormatada;
+    }
+
+    public static function getFormaIngresso(){
+        var_dump(self::$ultimaMatricula->formaIngresso);
+        return self::$ultimaMatricula->formaIngresso;
     }
 }
 
