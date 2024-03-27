@@ -1,5 +1,5 @@
 <?php
-include_once '../../model/FromJson.php';
+include_once '../../model/utils/FromJson.php';
 include_once '../../model/database/EgressoDao.php';
 include_once 'PessoaController.php';
 include_once 'IngressoController.php';

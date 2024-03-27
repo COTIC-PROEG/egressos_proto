@@ -2,14 +2,9 @@
 
 include_once '../../model/database/EtniaDao.php';
 class EtniaController{
-
-    public function getAllEtnias() {
-        $etniaDao = new EtniaDao();
-    }
-
     public function cadastraEtniaPessoa($idPessoa, $etnia){
         $etniaDao = new EtniaDao();
-        $array = $etniaDao->getEtniaDaoByName($etnia);
+        $array = $etniaDao->getEtniaByName($etnia);
         if($array){
             $idEtnia = $array[0];
             $etniaDao->insertEtniaPessoa($idPessoa, $idEtnia);

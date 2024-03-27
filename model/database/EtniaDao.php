@@ -3,7 +3,7 @@
 include_once '../../model/class/Etnia.php';
 class EtniaDao extends Dao{
 
-    public function getEtniaDaoByName($etnia){
+    public function getEtniaByName($etnia){
         $sql = "SELECT idEtnia FROM etnia WHERE tipo = ?";
         $this->setParams($etnia->getTipoEtnia());
         $this->execute($sql);
