@@ -4,7 +4,7 @@ class CursoDao extends Dao{
 
     public function getCursoByName($curso){
         $sql = "SELECT idCurso FROM curso WHERE nome = ?";
-        $this->setParams($curso->getCurso());
+        $this->setParams($curso);
         $this->execute($sql);
         $rows = array();
         $result = $this->stmt->get_result();
@@ -14,7 +14,10 @@ class CursoDao extends Dao{
             }
         }
         $this->close();
-        return $rows;
+        if($rows != null){
+            return $rows[0];
+        }
+        return null;
     }
 
     public function insertCurso($curso){

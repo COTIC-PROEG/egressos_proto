@@ -5,8 +5,7 @@ class CampusController{
 
     public function cadastraCampus($campus){
         $campusDao = new CampusDao();
-        $array = $campusDao->getCampusByName($campus);
-        $idCampus = $array[0];
+        $idCampus = $campusDao->getCampusByName($campus);
         if($idCampus == null){
             $idCampus = $campusDao->insertCampus($campus);
         }

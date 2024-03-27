@@ -14,6 +14,20 @@ class EgressoDao extends Dao{
         }
 
     }
+
+    public function insertGraduacaoEgresso($idEgresso, $idCurso, $codCurso, $idInstituto, $idCampus){
+        $sql = "INSERT INTO graduacao(idEgresso, codigo_sigaa, idCampus, idCurso, idInstituto) VALUES(?, ?, ?, ?, ?)";
+        $this->setParams($idEgresso); //idEgresso = id da pessoa que é egresso (idPessoa
+        $this->setParams($codCurso);
+        $this->setParams($idCampus);
+        $this->setParams($idCurso);
+        $this->setParams($idInstituto);
+
+        $result = $this->execute($sql);
+        if($result){
+            return $this->getStmtId();
+        }
+    }
 }
 
 ?>

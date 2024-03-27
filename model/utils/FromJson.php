@@ -1,7 +1,7 @@
 <?php
-include 'class/Pessoa.php';
-include 'class/Etnia.php';
-include 'class/Egresso.php';
+include '../../model/class/Pessoa.php';
+include '../../model/class/Etnia.php';
+include '../../model/class/Egresso.php';
 
 require_once '../../vendor/autoload.php';
 
@@ -73,6 +73,23 @@ class FromJson{
 
     public static function getFormaIngresso(){
         return self::$ultimaMatricula->formaIngresso;
+    }
+
+    public static function getCurso(){
+        return self::$ultimaMatricula->curso;
+    }
+
+    public static function getUnidadeAcademica(){
+        return self::$ultimaMatricula->unidadeAcademica;
+    }
+
+    public static function getCampus(){
+        return self::$ultimaMatricula->campus;
+    }
+
+    public static function getCodigoCurso(){
+        $matricula = self::$ultimaMatricula->matricula;
+        return substr($matricula, 4, 3);
     }
 }
 

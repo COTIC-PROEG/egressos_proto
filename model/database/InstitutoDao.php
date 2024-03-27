@@ -3,7 +3,7 @@
 class InstitutoDao extends Dao{
 
     public function getInstitutoByName($instituto){
-        $sql = "SELECT idInstituto FROM curso WHERE nome = ?";
+        $sql = "SELECT idInstituto FROM instituto WHERE nome = ?";
         $this->setParams($instituto);
         $this->execute($sql);
         $rows = array();
@@ -14,7 +14,10 @@ class InstitutoDao extends Dao{
             }
         }
         $this->close();
-        return $rows;
+        if($rows != null){
+            return $rows[0];
+        }
+        return null;
     }
 
     public function insertInstituto($instituto){

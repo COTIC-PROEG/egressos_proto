@@ -3,10 +3,9 @@
 include_once '../../model/database/InstitutoDao.php';
 class InstitutoController{
 
-    public function cadastraCurso($instituto){
+    public function cadastraInstituto($instituto){
         $institutoDao = new InstitutoDao();
-        $array = $institutoDao->getInstitutoByName($instituto);
-        $idInstituto = $array[0];
+        $idInstituto = $institutoDao->getInstitutoByName($instituto);
         if($idInstituto == null){
             $idInstituto = $institutoDao->insertInstituto($instituto);
         }

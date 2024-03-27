@@ -3,6 +3,9 @@ include_once '../../model/utils/FromJson.php';
 include_once '../../model/database/EgressoDao.php';
 include_once 'PessoaController.php';
 include_once 'IngressoController.php';
+include_once 'CursoController.php';
+include_once 'InstitutoController.php';
+include_once 'CampusController.php';
 
 
 class EgressoController extends PessoaController{
@@ -20,10 +23,22 @@ class EgressoController extends PessoaController{
                     $ingressoController = new IngressoController();
                     $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
                     $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
+                    $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
                 }
             }
         }
 
+    }
+
+    public function cadastraCursoEgresso($idEgresso, $curso, $codCurso, $instituto, $campus){
+        $cursoController = new CursoController();
+        $institutoController = new InstitutoController();
+        $campusController = new CampusController();
+        $egressoDao = new EgressoDao();
+        $idCurso = $cursoController->cadastraCurso($curso);
+        $idInstituto = $institutoController->cadastraInstituto($instituto);
+        $idCampus = $campusController->cadastraCampus($campus);
+        $egressoDao->insertGraduacaoEgresso($idEgresso, $idCurso, $codCurso, $idInstituto, $idCampus);
     }
 
     public function acessarFormulario(){

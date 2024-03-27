@@ -14,7 +14,10 @@ class CampusDao extends Dao{
             }
         }
         $this->close();
-        return $rows;
+        if($rows != null){
+            return $rows[0];
+        }
+        return null;
     }
 
     public function insertCampus($campus){

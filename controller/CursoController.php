@@ -5,8 +5,7 @@ class CursoController{
 
     public function cadastraCurso($curso){
         $cursoDao = new CursoDao();
-        $array = $cursoDao->getCursoByName($curso);
-        $idCurso = $array[0];
+        $idCurso = $cursoDao->getCursoByName($curso);
         if($idCurso == null){
             $idCurso = $cursoDao->insertCurso($curso);
         }
