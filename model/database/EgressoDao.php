@@ -15,9 +15,23 @@ class EgressoDao extends Dao{
 
     }
 
-    public function insertGraduacaoEgresso($idEgresso, $idCurso, $codCurso, $idInstituto, $idCampus){
-        $sql = "INSERT INTO graduacao(idEgresso, codigo_sigaa, idCampus, idCurso, idInstituto) VALUES(?, ?, ?, ?, ?)";
-        $this->setParams($idEgresso); //idEgresso = id da pessoa que é egresso (idPessoa
+    public function searchGraduacaoByCodigo($codigo){
+        $sql = "SELECT * FROM graduacao WHERE codigo_sigaa = ?";
+        $this->setParams($codigo);
+        $result = $this->execute($sql);
+        $rows = array();
+        $result = $this->stmt->get_result();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {
+            foreach ($row as $r) {
+                $rows[] = $r;
+            }
+        }
+        $this->close();
+        return $rows;
+    }
+
+    public function insertGraduacaoEgresso($idCurso, $codCurso, $idInstituto, $idCampus){
+        $sql = "INSERT INTO graduacao(codigo_sigaa, idCampus, idCurso, idInstituto) VALUES(?, ?, ?, ?)";
         $this->setParams($codCurso);
         $this->setParams($idCampus);
         $this->setParams($idCurso);

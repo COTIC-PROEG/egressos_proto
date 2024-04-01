@@ -38,7 +38,12 @@ class EgressoController extends PessoaController{
         $idCurso = $cursoController->cadastraCurso($curso);
         $idInstituto = $institutoController->cadastraInstituto($instituto);
         $idCampus = $campusController->cadastraCampus($campus);
-        $egressoDao->insertGraduacaoEgresso($idEgresso, $idCurso, $codCurso, $idInstituto, $idCampus);
+        $array = $egressoDao->searchGraduacaoByCodigo($codCurso);
+        if($array){
+            $idGraduacao = $array[0];
+        }else{
+            $idGraduacao = $egressoDao->insertGraduacaoEgresso( $idCurso, $codCurso, $idInstituto, $idCampus);
+        }
     }
 
     public function acessarFormulario(){
