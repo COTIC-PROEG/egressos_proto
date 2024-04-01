@@ -99,6 +99,7 @@ abstract class AbstractDao implements IDao{
                 $rows[] = $r;
             }
         }
+        $this->closeConection();
         if($rows){
             return $rows[0];
         }
