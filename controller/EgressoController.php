@@ -40,9 +40,10 @@ class EgressoController extends PessoaController{
         $idCampus = $campusController->cadastraCampus($campus);
         $idGraduacao = $egressoDao->searchGraduacaoByCodigo($codCurso);
         if($idGraduacao != null){
-            // inserir depois
+            $egressoDao->insertGraduacaoEgresso($idEgresso, $idGraduacao);
         }else{
-            $idGraduacao = $egressoDao->insertGraduacaoEgresso( $idCurso, $codCurso, $idInstituto, $idCampus);
+            $novoIdGraduacao = $egressoDao->insertGraduacao( $idCurso, $codCurso, $idInstituto, $idCampus);
+            $egressoDao->insertGraduacaoEgresso($idEgresso, $novoIdGraduacao);
         }
     }
 

@@ -23,12 +23,23 @@ class EgressoDao extends Dao{
         return $this->getId($result);
     }
 
-    public function insertGraduacaoEgresso($idCurso, $codCurso, $idInstituto, $idCampus){
+    public function insertGraduacao($idCurso, $codCurso, $idInstituto, $idCampus){
         $sql = "INSERT INTO graduacao(codigo_sigaa, idCampus, idCurso, idInstituto) VALUES(?, ?, ?, ?)";
         $this->setParams($codCurso);
         $this->setParams($idCampus);
         $this->setParams($idCurso);
         $this->setParams($idInstituto);
+
+        $result = $this->execute($sql);
+        if($result){
+            return $this->getStmtId();
+        }
+    }
+
+    public function insertGraduacaoEgresso($idEgresso, $idGraduacao){
+        $sql = "INSERT INTO egresso_graduacao(idEgresso, idGraduacao) VALUES(?, ?)";
+        $this->setParams($idEgresso);
+        $this->setParams($idGraduacao);
 
         $result = $this->execute($sql);
         if($result){
