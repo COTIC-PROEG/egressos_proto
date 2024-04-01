@@ -7,15 +7,8 @@ class EtniaDao extends Dao{
         $sql = "SELECT idEtnia FROM etnia WHERE tipo = ?";
         $this->setParams($etnia->getTipoEtnia());
         $this->execute($sql);
-        $rows = array();
         $result = $this->stmt->get_result();
-        while ($row = $result->fetch_array(MYSQLI_NUM)) {
-            foreach ($row as $r) {
-                $rows[] = $r;
-            }
-        }
-        $this->close();
-        return $rows;
+        return $this->getId($result);
     }
 
     public function insertEtnia($etnia){

@@ -5,15 +5,8 @@ class IngressoDao extends Dao{
         $sql = "SELECT idIngresso FROM ingresso WHERE forma = ?";
         $this->setParams($tipoIngresso);
         $this->execute($sql);
-        $rows = array();
         $result = $this->stmt->get_result();
-        while ($row = $result->fetch_array(MYSQLI_NUM)) {
-            foreach ($row as $r) {
-                $rows[] = $r;
-            }
-        }
-        $this->close();
-        return $rows;
+        return $this->getId($result);
     }
 
     public function insertFormaIngresso($tipoIngresso){

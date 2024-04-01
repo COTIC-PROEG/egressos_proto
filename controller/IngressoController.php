@@ -5,9 +5,8 @@ class IngressoController{
 
     public function cadastraFormaIngresso($idEgresso, $tipoIngresso){
         $ingressoDao = new IngressoDao();
-        $array = $ingressoDao->getFormaIngresso($tipoIngresso);
-        if($array){
-            $idFormaEgresso = $array[0];
+        $idFormaEgresso = $ingressoDao->getFormaIngresso($tipoIngresso);
+        if($idFormaEgresso != null){
             $ingressoDao->insertEgressoFormaIngresso($idEgresso, $idFormaEgresso);
         }else{
             $idNovaFormaIngresso = $ingressoDao->insertFormaIngresso($tipoIngresso);
