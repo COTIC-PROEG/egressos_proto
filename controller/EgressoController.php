@@ -9,6 +9,7 @@ include_once 'CampusController.php';
 
 
 class EgressoController extends PessoaController{
+    #private final string $newURL = 'http://localhost/egressos_web/view/pages/formularioEgresso';
     public function cadastrarEgresso(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(isset($_POST['cpf']) && isset($_POST['dataNascimento'])){
@@ -18,9 +19,9 @@ class EgressoController extends PessoaController{
                 if($status == 200){
                     $egresso = FromJson::getEgressoFromJson();
                     $pessoa = $egresso->getPessoaEgresso();
-                    $idPessoa = $this->cadastraPessoa($pessoa);
                     $egressoDao = new EgressoDao();
                     $ingressoController = new IngressoController();
+                    $idPessoa = $this->cadastraPessoa($pessoa);
                     $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
                     $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
                     $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
@@ -45,6 +46,9 @@ class EgressoController extends PessoaController{
             $novoIdGraduacao = $egressoDao->insertGraduacao( $idCurso, $codCurso, $idInstituto, $idCampus);
             $egressoDao->insertGraduacaoEgresso($idEgresso, $novoIdGraduacao);
         }
+        $newURL = 'http://localhost/egressos_web/view/pages/formularioEgresso.';
+        header("Location: ".$newURL."php");
+        die();
     }
 
     public function acessarFormulario(){
