@@ -1,7 +1,10 @@
 ﻿<?php
 include_once '../../controller/EgressoController.php';
 $egressoController = new EgressoController();
+$generoController = new GeneroController();
+
 $egresso = $egressoController->carregaDadosEgresso();
+$generos = $generoController->getAllGeneros();
 ?>
 
 <!DOCTYPE html>
