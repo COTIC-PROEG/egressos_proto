@@ -16,6 +16,10 @@ class Etnia{
         return $this->etnia;
     }
 
+    public function setTipoEtnia(string $tipoEtnia): void{
+        $this->etnia = $tipoEtnia;
+    }
+
 }
 
 ?>

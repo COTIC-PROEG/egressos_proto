@@ -12,6 +12,12 @@ class EtniaController{
             $etniaDao->insertEtniaPessoa($idPessoa, $idNovaEtnia);
         }
     }
+
+    public function getEtniaPessoa($idPessoa){
+        $etniaDao = new EtniaDao();
+        $etnia = $etniaDao->getEtniaPessoa($idPessoa);
+        return $etnia;
+    }
 }
 
 ?>

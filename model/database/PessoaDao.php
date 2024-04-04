@@ -14,10 +14,7 @@ class PessoaDao extends Dao{
         if($result){
             return $this->getStmtId();   
         }
-
     }
-
-    public function get(){}
 }
 
 ?>

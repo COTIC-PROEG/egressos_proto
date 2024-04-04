@@ -19,6 +19,10 @@ class Egresso extends Pessoa{
         return $this->idEgresso;
     }
 
+    public function setIdEgresso($idEgresso): void{
+        $this->idEgresso = $idEgresso;
+    }
+
     public function getAnoIngresso(): string{
         return $this->anoIngresso;
     }
@@ -41,11 +45,6 @@ class Egresso extends Pessoa{
 
     public function getPosGraduacao(): PosGraduacao{
         return $this->posGraduacao;
-    }
-
-    public function getPessoaEgresso(){
-        $pessoa = new Pessoa($this->getNome(), $this->getCpf(), $this->getDataNascimento(), $this->getEtnia());
-        return $pessoa;
     }
     
 }

@@ -46,6 +46,18 @@ class EgressoDao extends Dao{
             return $this->getStmtId();
         }
     }
+
+    public function getDadosEgresso($idPessoa){
+        $sql = "SELECT idEgresso, anoIngresso, anoFormatura, nome, cpf, dataNascimento FROM egresso INNER JOIN pessoa ON egresso.idPessoa = pessoa.idPessoa WHERE regresso.idPessoa = ?";
+        $result = $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $etniaDao = new EtniaDao();
+        $rows = $this->get($result);
+        $egresso = new Egresso($rows['nome'], $rows['cpf'], $rows['dataNascimento'], $etniaDao->getEtniaPessoa($idPessoa), $rows['anoIngresso'], $rows['anoFormatura']);
+        $egresso->setIdEgresso($rows['idEgresso']);
+        $egresso->setIdPessoa($idPessoa);
+        return $egresso;
+    }
 }
 
 ?>

@@ -24,10 +24,6 @@ class Dao extends AbstractDao{
         return $id;
     }
 
-    public function get(){
-        $this->conexaoMySql->queryConexao($this->sql);
-    }
-
 }
 
 ?>

@@ -20,8 +20,16 @@ class Pessoa{
         return $this->idPessoa;
     }
 
+    public function setIdPessoa($idPessoa): void{
+        $this->idPessoa = $idPessoa;
+    }
+
     public function getNome(): string{
         return $this->nome;
+    }
+
+    public function setNome($nome): void{
+        $this->nome = $nome;
     }
 
     public function getCpf(): string{
@@ -33,6 +41,10 @@ class Pessoa{
 
     public function getEmail(): string{
         return $this->email;
+    }
+
+    public function setEmail($email): void{
+        $this->email = $email;
     }
 
 
@@ -48,8 +60,16 @@ class Pessoa{
         return $this->etnia;
     }
 
+    public function setEtnia($etnia): void{
+        $this->etnia = $etnia;
+    }
+
     public function getGenero(): Genero{
         return $this->genero;
+    }
+
+    public function setGenero($genero): void{
+        $this->genero = $genero;
     }
 
 }

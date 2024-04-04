@@ -1,6 +1,7 @@
 ﻿<?php
-//include_once 'dadosEgresso.php';
-//definirDadosSessao();
+include_once '../../controller/EgressoController.php';
+$egressoController = new EgressoController();
+//$egresso = $egressoController->carregaDadosEgresso();
 ?>
 
 <!DOCTYPE html>
