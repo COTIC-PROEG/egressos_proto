@@ -1,5 +1,6 @@
 ﻿<?php
 include_once '../../controller/EgressoController.php';
+include_once '../../controller/GeneroController.php';
 $egressoController = new EgressoController();
 $generoController = new GeneroController();
 
