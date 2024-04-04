@@ -32,7 +32,9 @@ class EtniaDao extends Dao{
         $this->execute($sql);
         $result = $this->stmt->get_result();
         $rows = $this->get($result);
-        return new Etnia($rows['tipoEtnia']);
+        foreach($rows as $row) {
+            return new Etnia($row['tipoEtnia']);
+        }
     }
 
 }

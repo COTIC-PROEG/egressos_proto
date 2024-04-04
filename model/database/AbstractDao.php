@@ -108,7 +108,7 @@ abstract class AbstractDao implements IDao{
 
     protected function get($result){
         $rows = array();
-        while ($row = $result->fetch_assoc()(MYSQLI_ASSOC)) {
+        while ($row = $result->fetch_assoc()) {
             $rows[] = $row;
         }
         $this->closeConection();

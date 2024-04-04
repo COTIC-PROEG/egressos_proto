@@ -47,7 +47,8 @@ class EgressoController extends PessoaController{
         }
     }
 
-    public function carregaDadosEgresso($idPessoa){
+    public function carregaDadosEgresso(){
+        $idPessoa = $_GET['id'];
         $egressoDao = new EgressoDao();
         return $egressoDao->getDadosEgresso($idPessoa);
     }

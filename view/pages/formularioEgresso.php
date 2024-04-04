@@ -1,7 +1,7 @@
 ﻿<?php
 include_once '../../controller/EgressoController.php';
 $egressoController = new EgressoController();
-//$egresso = $egressoController->carregaDadosEgresso();
+$egresso = $egressoController->carregaDadosEgresso();
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ $egressoController = new EgressoController();
 					<!-- --------------------------------------------------------------- -->
 					<legend><strong>DADOS PESSOAIS</strong></legend>
 					<div class="dados">
-						<p>Nome: <span><?php echo 'nome';?></span></p>
+						<p>Nome: <span><?php echo $egresso->getNome(); ?></span></p>
 						<!--<p>Idade: <span><?php //echo $_SESSION['idade'];?></span></p>-->
 						<p>Faixa Etária: <span><?php echo 'faixaEtaria';?></span></p>
 						<p>Email: <span><input size=26 placeholder="Digite seu e-mail" type="email" id="email" name="email" required></span></p>
@@ -61,7 +61,7 @@ $egressoController = new EgressoController();
 						
 					<div class="dados">
 						<div>
-						<p>Cor: <span><?php echo $_SESSION['cor'];?></span></p>
+						<p>Cor: <span><?php echo $egresso->getEtnia()->getTipoEtnia();?></span></p>
 						</div>
 					</div>
 					<!-- --------------------------------------------------------------- -->
@@ -73,8 +73,8 @@ $egressoController = new EgressoController();
 					<div class="dados">
 						<p>Curso: <span><?php echo $_SESSION['curso'];?></span></p>
 						<p>Campus: <span><?php echo $_SESSION['campus'];?></span></p>
-						<p>Ano de Ingresso: <span><?php echo $_SESSION['anoIngresso'];?></span></p>
-						<p>Ano de Conclusão: <span><?php echo $_SESSION['anoFormatura'];?></span></p>
+						<p>Ano de Ingresso: <span><?php echo $egresso->getAnoIngresso()?></span></p>
+						<p>Ano de Conclusão: <span><?php echo $egresso->getAnoFormatura();?></span></p>
 						<p>Forma Ingresso: <span><?php echo $_SESSION['formaIngresso'];?></span></p>
 						<p>Cota: <span><?php echo $_SESSION['cota'];?></span></p>
 					</div>

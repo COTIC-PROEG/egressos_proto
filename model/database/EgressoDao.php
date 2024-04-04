@@ -48,15 +48,20 @@ class EgressoDao extends Dao{
     }
 
     public function getDadosEgresso($idPessoa){
-        $sql = "SELECT idEgresso, anoIngresso, anoFormatura, nome, cpf, dataNascimento FROM egresso INNER JOIN pessoa ON egresso.idPessoa = pessoa.idPessoa WHERE regresso.idPessoa = ?";
-        $result = $this->execute($sql);
+        $sql = "SELECT idEgresso, anoIngresso, anoFormatura, nome, cpf, dataNascimento FROM egresso INNER JOIN pessoa ON egresso.idPessoa = pessoa.idPessoa WHERE egresso.idPessoa = ?";
+        $this->setParams($idPessoa);
+        $this->execute($sql);
         $result = $this->stmt->get_result();
         $etniaDao = new EtniaDao();
+        $etnia = $etniaDao->getEtniaPessoa($idPessoa);
         $rows = $this->get($result);
-        $egresso = new Egresso($rows['nome'], $rows['cpf'], $rows['dataNascimento'], $etniaDao->getEtniaPessoa($idPessoa), $rows['anoIngresso'], $rows['anoFormatura']);
-        $egresso->setIdEgresso($rows['idEgresso']);
-        $egresso->setIdPessoa($idPessoa);
-        return $egresso;
+        foreach($rows as $row) {
+            $data = DateTime::createFromFormat('Y-m-d', $row['dataNascimento']);
+            $egresso = new Egresso($row['nome'], $row['cpf'], $data, $etnia, $row['anoIngresso'], $row['anoFormatura']);
+            $egresso->setIdEgresso($row['idEgresso']);
+            $egresso->setIdPessoa($idPessoa);
+            return $egresso;
+        }
     }
 }
 
