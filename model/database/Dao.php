@@ -24,6 +24,22 @@ class Dao extends AbstractDao{
         return $id;
     }
 
+    public function query($sql){
+        $this->openConnection();
+        $stmt = $this->conexaoMySql->getConexao()->query($sql);
+        $rows = array();
+        while ($row = $stmt->fetch_array(MYSQLI_NUM)) {
+            foreach ($row as $r) {
+                $rows[] = $r;
+            }
+        }
+        $this->closeConection();
+        if($rows){
+            return $rows;
+        }
+        return null;
+    }
+
 }
 
 ?>

@@ -59,6 +59,11 @@ class EgressoController extends PessoaController{
         die();
         
     }
+
+    public function getGraduacao($idEgresso){
+        $egressoDao = new EgressoDao();
+        return $egressoDao->getGraduacaoByCodigo($idEgresso);
+    }
 }
 
 ?>

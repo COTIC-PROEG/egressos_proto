@@ -5,6 +5,7 @@ $egressoController = new EgressoController();
 $generoController = new GeneroController();
 
 $egresso = $egressoController->carregaDadosEgresso();
+$graduacao = $egressoController->getGraduacao($egresso->getIdEgresso());
 $generos = $generoController->getAllGeneros();
 ?>
 
@@ -56,9 +57,11 @@ $generos = $generoController->getAllGeneros();
 							<label style="font-size: larger; max-width: cal(100% - 98px);">Gênero: </label>
 							<select id="genero" name="genero">
 								<option>Selecione</option>
-								<option value="Masculino">Masculino</option>
-								<option value="Feminino">Feminino</option>
-								<option value="Outro">Outro</option>
+								<?php 
+									foreach ($generos as $genero){
+										echo "<option value='".$genero."'>".$genero."</option>";
+									}
+								?>
 							</select>
 						</div>
 					</div>

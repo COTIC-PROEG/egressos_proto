@@ -63,6 +63,15 @@ class EgressoDao extends Dao{
             return $egresso;
         }
     }
+
+    public function getGraduacaoByCodigo($codigo){
+        $sql = "SELECT * FROM graduacao WHERE codigo_sigaa = ?";
+        $this->setParams($codigo);
+        $result = $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $rows = $this->get($result);
+        return 0;
+    }
 }
 
 ?>
