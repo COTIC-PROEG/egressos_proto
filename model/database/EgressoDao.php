@@ -60,8 +60,8 @@ class EgressoDao extends Dao{
             $egresso = new Egresso($row['nome'], $row['cpf'], $data, $etnia, $row['anoIngresso'], $row['anoFormatura']);
             $egresso->setIdEgresso($row['idEgresso']);
             $egresso->setIdPessoa($idPessoa);
-            return $egresso;
         }
+        return $egresso;
     }
 
     public function getGraduacaoByCodigo($idEgresso){

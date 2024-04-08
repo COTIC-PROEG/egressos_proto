@@ -8,8 +8,16 @@ class Curso{
         return $this->idCurso;
     }
 
+    public function setIdCurso($idCurso): void{
+        $this->idCurso = $idCurso;
+    }
+
     public function getCurso(): string{
         return $this->nome;
+    }
+
+    public function setCurso($nome){
+        $this->nome = $nome;
     }
 }
 
