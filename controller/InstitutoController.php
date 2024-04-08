@@ -12,6 +12,10 @@ class InstitutoController{
         return $idInstituto;
     }
 
+    public function getInstituto($idInstituto){
+        $institutoDao = new InstitutoDao();
+    }
+
 
 }
 

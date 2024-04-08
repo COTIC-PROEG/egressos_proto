@@ -12,6 +12,10 @@ class CursoController{
         return $idCurso;
     }
 
+    public function getCurso($idCurso){
+        $cursoDao = new CursoDao();
+    }
+
 
 }
 

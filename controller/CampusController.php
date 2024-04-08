@@ -12,6 +12,10 @@ class CampusController{
         return $idCampus;
     }
 
+    public function getCampus($idCampus){
+        $campusDao = new CampusDao();
+    }
+
 }
 
 ?>
