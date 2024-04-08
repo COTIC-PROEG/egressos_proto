@@ -12,11 +12,11 @@ class Curso{
         $this->idCurso = $idCurso;
     }
 
-    public function getCurso(): string{
+    public function getNome(): string{
         return $this->nome;
     }
 
-    public function setCurso($nome){
+    public function setNome($nome){
         $this->nome = $nome;
     }
 }

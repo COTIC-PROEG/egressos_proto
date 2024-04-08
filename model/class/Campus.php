@@ -4,7 +4,7 @@ class Campus{
     private int $idCampus;
     private string $nome;
 
-    public function getiIdCampus(): int{
+    public function getIdCampus(): int{
         return $this->idCampus;
     }
 
@@ -12,11 +12,11 @@ class Campus{
         $this->idCampus = $idCampus;
     }
 
-    public function getCampus(): string{
+    public function getNome(): string{
         return $this->nome;
     }
 
-    public function setCampus($nome){
+    public function setNome($nome){
         $this->nome = $nome;
     }
 }

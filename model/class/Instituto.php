@@ -12,11 +12,11 @@ class Instituto{
         $this->idInstituto = $idInstituto;
     }
 
-    public function getInstituto(): string{
+    public function getNome(): string{
         return $this->nome;
     }
 
-    public function setInstituto($nome){
+    public function setNome($nome){
         $this->nome = $nome;
     }
 }
