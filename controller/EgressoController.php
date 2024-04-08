@@ -6,6 +6,7 @@ include_once 'IngressoController.php';
 include_once 'CursoController.php';
 include_once 'InstitutoController.php';
 include_once 'CampusController.php';
+include_once 'GraduacaoController.php';
 
 
 class EgressoController extends PessoaController{
@@ -62,7 +63,9 @@ class EgressoController extends PessoaController{
 
     public function getGraduacao($idEgresso){
         $egressoDao = new EgressoDao();
-        return $egressoDao->getGraduacaoByCodigo($idEgresso);
+        $graduacaoController = new GraduacaoController();
+        $idGraduacao = $egressoDao->getGraduacaoByCodigo($idEgresso);
+        $dadosGraduacao = $graduacaoController->getDadosGraduacao($idGraduacao);
     }
 }
 
