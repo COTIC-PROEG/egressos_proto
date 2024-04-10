@@ -9,22 +9,22 @@ class GraduacaoController{
         $graduacao->getCurso()->setNome($this->getCurso($graduacao->getCurso()->getIdCurso()));
         $graduacao->getCampus()->setNome($this->getCampus($graduacao->getCampus()->getIdCampus()));
         $graduacao->getInstituto()->setNome($this->getInstituto($graduacao->getInstituto()->getIdInstituto()));
-        echo var_dump($graduacao->getCodigoSigaa());
+        return $graduacao;
     }
 
     private function getCurso($idCurso){
         $cursoController = new CursoController();
-        return '';
+        return $cursoController->getCurso($idCurso);
     }
 
     private function getCampus($idCampus){
         $campusController = new CampusController();
-        return '';
+        return $campusController->getCampus($idCampus);
     }
 
     private function getInstituto($idInstitutor){      
         $institutoController = new InstitutoController();
-        return '';
+        return $institutoController->getInstituto($idInstitutor);
     }
 
 }

@@ -14,6 +14,8 @@ class InstitutoController{
 
     public function getInstituto($idInstituto){
         $institutoDao = new InstitutoDao();
+        $campus = $institutoDao->getInstitutoById($idInstituto);
+        return $campus;
     }
 
 

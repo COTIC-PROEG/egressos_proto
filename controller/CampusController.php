@@ -14,6 +14,8 @@ class CampusController{
 
     public function getCampus($idCampus){
         $campusDao = new CampusDao();
+        $campus = $campusDao->getCampusById($idCampus);
+        return $campus;
     }
 
 }

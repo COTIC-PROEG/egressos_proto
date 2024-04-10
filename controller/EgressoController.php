@@ -65,7 +65,7 @@ class EgressoController extends PessoaController{
         $egressoDao = new EgressoDao();
         $graduacaoController = new GraduacaoController();
         $idGraduacao = $egressoDao->getGraduacaoByCodigo($idEgresso);
-        $dadosGraduacao = $graduacaoController->getDadosGraduacao($idGraduacao);
+        return $graduacaoController->getDadosGraduacao($idGraduacao);
     }
 }
 

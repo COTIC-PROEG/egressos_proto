@@ -16,6 +16,17 @@ class CursoDao extends Dao{
         $this->execute($sql);
         return $this->getStmtId(); 
     }
+
+    public function getCursoById($idCurso){
+        $sql = "SELECT nome FROM curso WHERE idCurso = ?";
+        $this->setParams($idCurso);
+        $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $rows = $this->get($result);
+        foreach($rows as $row){
+            return $row['nome'];
+        }
+    }
 }
 
 ?>

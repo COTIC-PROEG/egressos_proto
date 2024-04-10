@@ -16,6 +16,17 @@ class CampusDao extends Dao{
         $this->execute($sql);
         return $this->getStmtId(); 
     }
+
+    public function getCampusById($idCampus){
+        $sql = "SELECT nome FROM campus WHERE idCampus = ?";
+        $this->setParams($idCampus);
+        $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $rows = $this->get($result);
+        foreach($rows as $row){
+            return $row['nome'];
+        }
+    }
 }
 
 ?>

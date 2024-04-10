@@ -78,8 +78,8 @@ $generos = $generoController->getAllGeneros();
 					<!-- --------------------------------------------------------------- -->
 					<legend><strong>DADOS ACADÊMICOS</strong></legend>
 					<div class="dados">
-						<p>Curso: <span><?php echo $_SESSION['curso'];?></span></p>
-						<p>Campus: <span><?php echo $_SESSION['campus'];?></span></p>
+						<p>Curso: <span><?php echo $graduacao->getCurso()->getNome()?></span></p>
+						<p>Campus: <span><?php echo $graduacao->getCampus()->getNome()?></span></p>
 						<p>Ano de Ingresso: <span><?php echo $egresso->getAnoIngresso()?></span></p>
 						<p>Ano de Conclusão: <span><?php echo $egresso->getAnoFormatura();?></span></p>
 						<p>Forma Ingresso: <span><?php echo $_SESSION['formaIngresso'];?></span></p>

@@ -16,6 +16,17 @@ class InstitutoDao extends Dao{
         $this->execute($sql);
         return $this->getStmtId(); 
     }
+
+    public function getInstitutoById($idInstituto){
+        $sql = "SELECT nome FROM instituto WHERE idInstituto = ?";
+        $this->setParams($idInstituto);
+        $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $rows = $this->get($result);
+        foreach($rows as $row){
+            return $row['nome'];
+        }
+    }
 }
 
 ?>

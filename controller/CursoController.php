@@ -14,6 +14,8 @@ class CursoController{
 
     public function getCurso($idCurso){
         $cursoDao = new CursoDao();
+        $campus = $cursoDao->getCursoById($idCurso);
+        return $campus;
     }
 
 
