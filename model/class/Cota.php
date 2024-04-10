@@ -8,7 +8,7 @@ class Cota{
         return $this->idCota;
     }
 
-    public function getTipoBolsa(): string{
+    public function getTipoCota(): string{
         return $this->tipoCota;
     }
 

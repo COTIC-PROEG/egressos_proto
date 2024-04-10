@@ -83,7 +83,7 @@ $generos = $generoController->getAllGeneros();
 						<p>Ano de Ingresso: <span><?php echo $egresso->getAnoIngresso()?></span></p>
 						<p>Ano de Conclusão: <span><?php echo $egresso->getAnoFormatura();?></span></p>
 						<p>Forma Ingresso: <span><?php echo $egresso->getIngresso()->getTipoIngresso()?></span></p>
-						<p>Cota: <span><?php echo $_SESSION['cota'];?></span></p>
+						<p>Cota: <span><?php echo $egresso->getCota()->getTipoCota()?></span></p>
 					</div>
 					
 					<!-- --------------------------------------------------------------- -->

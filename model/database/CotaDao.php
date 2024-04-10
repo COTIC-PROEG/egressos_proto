@@ -24,6 +24,17 @@ class CotaDao extends Dao{
         return $this->getStmtId();
     }
 
+    public function getCotaById($idEgresso){
+        $sql = "SELECT tipoCota FROM cota INNER JOIN egresso_cota ON egresso_cota.idCota = cota.idCota WHERE idEgresso = ?";
+        $this->setParams($idEgresso);
+        $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $rows = $this->get($result);
+        foreach($rows as $row){
+            return $row['tipoCota'];
+        }
+    }
+
 }
 
 ?>

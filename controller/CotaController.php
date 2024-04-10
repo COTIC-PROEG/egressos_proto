@@ -14,11 +14,11 @@ class CotaController{
         }
     }
 
-    public function getCotaIngresso($idEgresso){
-        // $ingressoDao = new IngressoDao();
-        // $ingresso = new Ingresso();
-        // $ingresso->setTipoIngresso($ingressoDao->getFormaIngressoById($idEgresso));
-        // return $ingresso;
+    public function getCota($idEgresso){
+        $cotaDao = new CotaDao();
+        $cota = new Cota();
+        $cota->setTipoCota($cotaDao->getCotaById($idEgresso));
+        return $cota;
     }
 }
 

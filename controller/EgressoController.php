@@ -55,8 +55,10 @@ class EgressoController extends PessoaController{
         $idPessoa = $_GET['id'];
         $egressoDao = new EgressoDao();
         $ingressoController = new IngressoController();
+        $cotaController = new CotaController();
         $egresso = $egressoDao->getDadosEgresso($idPessoa);
         $egresso->setIngresso($ingressoController->getFormaIngresso($egresso->getIdEgresso()));
+        $egresso->setCota($cotaController->getCota($egresso->getIdEgresso()));
         return $egresso;
 
     }
