@@ -7,6 +7,7 @@ include_once 'CursoController.php';
 include_once 'InstitutoController.php';
 include_once 'CampusController.php';
 include_once 'GraduacaoController.php';
+include_once 'CotaController.php';
 
 
 class EgressoController extends PessoaController{
@@ -20,9 +21,11 @@ class EgressoController extends PessoaController{
                     $egresso = FromJson::getEgressoFromJson();
                     $egressoDao = new EgressoDao();
                     $ingressoController = new IngressoController();
+                    $cotaController = new CotaController();
                     $idPessoa = $this->cadastraPessoa($egresso);
                     $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
                     $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
+                    $cotaController->cadastraCota($idEgresso, FromJson::getCota());
                     $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
                     $this->acessarFormulario($idPessoa);
                 }

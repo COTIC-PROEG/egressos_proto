@@ -51,6 +51,14 @@ class Egresso extends Pessoa{
     public function getPosGraduacao(): PosGraduacao{
         return $this->posGraduacao;
     }
+
+    public function getCota(): Cota{
+        return $this->cota;
+    }
+
+    public function setCota($cota): void{
+        $this->cota = $cota;
+    }
     
 }
 

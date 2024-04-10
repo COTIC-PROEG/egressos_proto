@@ -2,7 +2,7 @@
 include '../../model/class/Pessoa.php';
 include '../../model/class/Etnia.php';
 include '../../model/class/Egresso.php';
-
+include '../../model/class/Cota.php';
 require_once '../../vendor/autoload.php';
 
 use GuzzleHttp\Client;
@@ -62,6 +62,9 @@ class FromJson{
                             self::$ultimaMatricula->anoIngresso,
                             self::$ultimaMatricula->anoFormatura
                         );
+        $cota = new Cota();
+        $cota->setTipoCota(self::$ultimaMatricula->cota);
+        $egresso->setCota($cota);
         return $egresso;
     }
 
@@ -77,6 +80,10 @@ class FromJson{
 
     public static function getCurso(){
         return self::$ultimaMatricula->curso;
+    }
+
+    public function getCota(){
+        return self::$ultimaMatricula->cota;
     }
 
     public static function getUnidadeAcademica(){
