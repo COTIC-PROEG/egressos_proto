@@ -6,6 +6,7 @@ class Egresso extends Pessoa{
     private string $anoFormatura;
     private Ingresso $ingresso;
     private PosGraduacao $posGraduacao;
+    private Cota $cota;
     private array $bolsas;
     private array $atividades;
 
