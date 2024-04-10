@@ -35,6 +35,10 @@ class Egresso extends Pessoa{
         return $this->ingresso;
     }
 
+    public function setIngresso($ingresso): void{
+        $this->ingresso = $ingresso;
+    }
+
     public function getBolsas(): array{
         return $this->bolsas;
     }

@@ -23,6 +23,17 @@ class IngressoDao extends Dao{
         $this->execute($sql);
         return $this->getStmtId();
     }
+
+    public function getFormaIngressoById($idEgresso){
+        $sql = "SELECT forma FROM ingresso INNER JOIN egresso_ingresso ON egresso_ingresso.idIngresso = ingresso.idIngresso WHERE idEgresso = ?";
+        $this->setParams($idEgresso);
+        $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $rows = $this->get($result);
+        foreach($rows as $row){
+            return $row['forma'];
+        }
+    }
 }
 
 ?>
