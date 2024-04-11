@@ -27,6 +27,16 @@ class GraduacaoController{
         return $institutoController->getInstituto($idInstitutor);
     }
 
+    public function getAllPosGraduacao(){
+        $posGraduacaoDao = new GraduacaoDao();
+        $rows = $posGraduacaoDao->getAllPosGraduacao();
+        $pos = array();
+        for($i = 0; $i < count($rows); $i = $i+2){
+            $pos[$rows[$i]] = $rows[$i+1];
+        }
+        return $pos;
+    }
+
 }
 
 ?>

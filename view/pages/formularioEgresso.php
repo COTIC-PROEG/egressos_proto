@@ -1,12 +1,16 @@
 ﻿<?php
 include_once '../../controller/EgressoController.php';
 include_once '../../controller/GeneroController.php';
+include_once '../../controller/GraduacaoController.php';
+
 $egressoController = new EgressoController();
 $generoController = new GeneroController();
+$graduacaoController = new GraduacaoController();
 
 $egresso = $egressoController->carregaDadosEgresso();
 $graduacao = $egressoController->getGraduacao($egresso->getIdEgresso());
 $generos = $generoController->getAllGeneros();
+$pos = $graduacaoController->getAllPosGraduacao();
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +61,9 @@ $generos = $generoController->getAllGeneros();
 							<label style="font-size: larger; max-width: cal(100% - 98px);">Gênero: </label>
 							<select id="genero" name="genero">
 								<option>Selecione</option>
-								<?php 
-									foreach ($generos as $genero){
-										echo "<option value='".$genero."'>".$genero."</option>";
+								<?php
+									foreach ($generos as $indice => $valor){
+										echo "<option value='".$indice."'>".$valor."</option>";
 									}
 								?>
 							</select>
@@ -202,10 +206,11 @@ $generos = $generoController->getAllGeneros();
 						<label style="font-size: larger; max-width: cal(100% - 98px);">7. Após a graduação, qual o nível do último curso de pós-graduação realizado e/ou em andamento?</label>
 							<select name="cursoPosGraduacao" id="cursoPosGraduacao" onchange="posGraduacao()">
 								<option>Selecione</option>
-								<option value="Especialização">MBA/Especialização</option>
-								<option value="Mestrado">Mestrado</option>
-								<option value="Doutorado">Doutorado</option>
-                                <option value="Nenhum">Nenhum</option>
+								<?php
+									foreach ($pos as $indice => $valor){
+										echo "<option value='".$indice."'>".$valor."</option>";
+									}
+								?>
 							</select>
 						</div>
 					</div>

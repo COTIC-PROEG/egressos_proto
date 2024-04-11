@@ -27,6 +27,11 @@ class GraduacaoDao extends Dao{
         }
         return $graduacao;
     }
+
+    public function getAllPosGraduacao(){
+        $sql = "SELECT * FROM posgraduacao";
+        return $this->query($sql);
+    }
 }
 
 ?>
