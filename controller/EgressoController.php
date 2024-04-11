@@ -16,18 +16,23 @@ class EgressoController extends PessoaController{
             if(isset($_POST['cpf']) && isset($_POST['dataNascimento'])){
                 $cpf = $_POST['cpf'];
                 $dataNascimento = $_POST['dataNascimento'];
-                $status = FromJson::getUltimaMatricula($cpf);
-                if($status == 200){
-                    $egresso = FromJson::getEgressoFromJson();
-                    $egressoDao = new EgressoDao();
-                    $ingressoController = new IngressoController();
-                    $cotaController = new CotaController();
-                    $idPessoa = $this->cadastraPessoa($egresso);
-                    $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
-                    $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
-                    $cotaController->cadastraCota($idEgresso, FromJson::getCota());
-                    $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
+                $idPessoa = $this->verificaCadastroByCpf($cpf);
+                if($idPessoa != null){
                     $this->acessarFormulario($idPessoa);
+                }else{
+                    $status = FromJson::getUltimaMatricula($cpf);
+                    if($status == 200){
+                        $egresso = FromJson::getEgressoFromJson();
+                        $egressoDao = new EgressoDao();
+                        $ingressoController = new IngressoController();
+                        $cotaController = new CotaController();
+                        $idPessoa = $this->cadastraPessoa($egresso);
+                        $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
+                        $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
+                        $cotaController->cadastraCota($idEgresso, FromJson::getCota());
+                        $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
+                        $this->acessarFormulario($idPessoa);
+                    }
                 }
             }
         }
@@ -61,6 +66,11 @@ class EgressoController extends PessoaController{
         $egresso->setCota($cotaController->getCota($egresso->getIdEgresso()));
         return $egresso;
 
+    }
+
+    public function verificaCadastroByCpf($cpf){
+        $egressoDao = new EgressoDao();
+        return $egressoDao->egressoByCpf($cpf);
     }
 
     public function acessarFormulario($idPessoa){

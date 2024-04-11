@@ -72,6 +72,15 @@ class EgressoDao extends Dao{
         $idGraduacao = $this->getId($result);
         return $idGraduacao;
     }
+
+    public function egressoByCpf($cpf){
+        $sql = "SELECT idPessoa FROM pessoa WHERE cpf = ?";
+        $this->setParams($cpf);
+        $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $idEgresso = $this->getId($result);
+        return $idEgresso;
+    }
 }
 
 ?>
