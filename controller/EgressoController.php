@@ -16,11 +16,16 @@ class EgressoController extends PessoaController{
             if(isset($_POST['cpf']) && isset($_POST['dataNascimento'])){
                 $cpf = $_POST['cpf'];
                 $dataNascimento = $_POST['dataNascimento'];
+                $status = FromJson::getUltimaMatricula($cpf);
+                $dataNascimentoSagitta = FromJson::stringDataNascimento();
+                if($dataNascimentoSagitta != $dataNascimento){
+                    echo "<script>alert('Data de nascimento não confere com a data de nascimento do egresso');</script>";
+                    return;
+                }
                 $idPessoa = $this->verificaCadastroByCpf($cpf);
                 if($idPessoa != null){
                     $this->acessarFormulario($idPessoa);
                 }else{
-                    $status = FromJson::getUltimaMatricula($cpf);
                     if($status == 200){
                         $egresso = FromJson::getEgressoFromJson();
                         $egressoDao = new EgressoDao();

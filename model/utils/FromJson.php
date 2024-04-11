@@ -74,6 +74,12 @@ class FromJson{
         return $dataFormatada;
     }
 
+    public static function stringDataNascimento(){
+        $novaData = str_replace('/', '-', self::$ultimaMatricula->dataNascimento);
+        $novaData = date('Y-m-d', strtotime($novaData));
+        return $novaData;
+    }
+
     public static function getFormaIngresso(){
         return self::$ultimaMatricula->formaIngresso;
     }
