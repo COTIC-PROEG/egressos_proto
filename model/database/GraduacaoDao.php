@@ -6,6 +6,7 @@ include_once '../../model/class/Instituto.php';
 class GraduacaoDao extends Dao{
 
     public function getDadosGraduacao($idGraduacao){
+        $this->getConection();
         $sql = "SELECT * FROM graduacao WHERE idGraduacao = ?";
         $this->setParams($idGraduacao);
         $this->execute($sql);
@@ -25,10 +26,12 @@ class GraduacaoDao extends Dao{
             $graduacao->getCurso()->setIdCurso($row['idCurso']);
             $graduacao->getInstituto()->setIdInstituto($row['idInstituto']);
         }
+        $this->close();
         return $graduacao;
     }
 
     public function getAllPosGraduacao(){
+        $this->getConection();
         $sql = "SELECT * FROM posgraduacao";
         return $this->query($sql);
     }

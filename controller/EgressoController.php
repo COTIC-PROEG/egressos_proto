@@ -36,13 +36,14 @@ class EgressoController extends PessoaController{
     private function cadastraInformacoes(){
         $egresso = FromJson::getEgressoFromJson();
         $egressoDao = new EgressoDao();
-        $ingressoController = new IngressoController();
-        $cotaController = new CotaController();
-        $idPessoa = $this->cadastraPessoa($egresso);
-        $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
-        $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
-        $cotaController->cadastraCota($idEgresso, FromJson::getCota());
-        $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
+        $idPessoa = $egressoDao->cadastraAllInformacoes($egresso);
+        // $ingressoController = new IngressoController();
+        // $cotaController = new CotaController();
+        // $idPessoa = $this->cadastraPessoa($egresso);
+        // $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
+        // $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
+        // $cotaController->cadastraCota($idEgresso, FromJson::getCota());
+        // $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
         return $idPessoa;
     }
 

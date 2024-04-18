@@ -7,39 +7,31 @@ class Dao extends AbstractDao{
         parent::__construct();
     }
 
-    public function execute($sql){ 
-        $this->openConnection();
-        $this->prepareStmt($sql);
-        return $this->executeQuery();
-	}
+    
 
     public function close(){
         $this->stmt->close();
         $this->closeConection();
     }
 
-    public function getStmtId(){
-        $id = $this->conexaoMySql->getConexao()->insert_id;
-        $this->close();
-        return $id;
-    }
-
-    public function query($sql){
+    public function getConection(){
         $this->openConnection();
-        $stmt = $this->conexaoMySql->getConexao()->query($sql);
-        $rows = array();
-        while ($row = $stmt->fetch_array(MYSQLI_NUM)) {
-            foreach ($row as $r) {
-                $rows[] = $r;
-            }
-        }
-        $this->closeConection();
-        if($rows){
-            return $rows;
-        }
-        return null;
     }
 
+    public function beginTransaction(){
+        $this->conexaoMySql->getConexao()->begin_transaction();
+    }
+
+    
+    public function commit(){
+        $this->conexaoMySql->getConexao()->commit();
+        $this->close();
+    }
+
+    public function rollback(){
+        $this->conexaoMySql->getConexao()->rollback();
+        $this->close();
+    }
 }
 
 ?>

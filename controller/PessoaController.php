@@ -6,7 +6,7 @@ include_once 'EtniaController.php';
 
 class PessoaController{
     
-    protected function cadastraPessoa($pessoa){
+    public function cadastraPessoa($pessoa){
         $etniaController = new EtniaController();
         $pessoa->setCpf($this->formataCPF($pessoa->getCpf()));
         //$pessoa->setDataNascimento($this->formataDataParaSql($pessoa->getDataNascimento()));

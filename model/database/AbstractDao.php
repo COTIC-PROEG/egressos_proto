@@ -99,7 +99,6 @@ abstract class AbstractDao implements IDao{
                 $rows[] = $r;
             }
         }
-        $this->closeConection();
         if($rows){
             return $rows[0];
         }
@@ -111,7 +110,29 @@ abstract class AbstractDao implements IDao{
         while ($row = $result->fetch_assoc()) {
             $rows[] = $row;
         }
-        $this->closeConection();
+        if($rows){
+            return $rows;
+        }
+        return null;
+    }
+
+    public function getStmtId(){
+        return $this->conexaoMySql->getConexao()->insert_id;
+    }
+
+    public function execute($sql){ 
+        $this->prepareStmt($sql);
+        return $this->executeQuery();
+	}
+
+    public function query($sql){
+        $stmt = $this->conexaoMySql->getConexao()->query($sql);
+        $rows = array();
+        while ($row = $stmt->fetch_array(MYSQLI_NUM)) {
+            foreach ($row as $r) {
+                $rows[] = $r;
+            }
+        }
         if($rows){
             return $rows;
         }

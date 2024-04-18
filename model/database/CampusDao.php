@@ -18,14 +18,17 @@ class CampusDao extends Dao{
     }
 
     public function getCampusById($idCampus){
+        $this->getConection();
         $sql = "SELECT nome FROM campus WHERE idCampus = ?";
         $this->setParams($idCampus);
         $this->execute($sql);
         $result = $this->stmt->get_result();
         $rows = $this->get($result);
         foreach($rows as $row){
-            return $row['nome'];
+            $nome = $row['nome'];
         }
+        $this->close();
+        return $nome;
     }
 }
 

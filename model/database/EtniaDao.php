@@ -4,6 +4,7 @@ include_once '../../model/class/Etnia.php';
 class EtniaDao extends Dao{
 
     public function getEtniaByName($etnia){
+        $this->getConection();
         $sql = "SELECT idEtnia FROM etnia WHERE tipoEtnia = ?";
         $this->setParams($etnia->getTipoEtnia());
         $this->execute($sql);
@@ -12,6 +13,7 @@ class EtniaDao extends Dao{
     }
 
     public function insertEtnia($etnia){
+        $this->getConection();
         $sql = "INSERT INTO etnia(tipoEtnia) VALUES(?)";
         $this->setParams($etnia->getTipoEtnia());
         $this->execute($sql);
@@ -19,6 +21,7 @@ class EtniaDao extends Dao{
     }
 
     public function insertEtniaPessoa($idPessoa, $idEtnia){
+        $this->getConection();
         $sql = "INSERT INTO pessoa_etnia(idPessoa, idEtnia) VALUES(?, ?)";
         $this->setParams($idPessoa);
         $this->setParams($idEtnia);
@@ -27,14 +30,21 @@ class EtniaDao extends Dao{
     }
 
     public function getEtniaPessoa($idPessoa){
+        $this->getConection();
         $sql = "SELECT tipoEtnia FROM etnia INNER JOIN pessoa_etnia ON etnia.idEtnia = pessoa_etnia.idEtnia WHERE pessoa_etnia.idPessoa = ?";
         $this->setParams($idPessoa);
         $this->execute($sql);
         $result = $this->stmt->get_result();
         $rows = $this->get($result);
-        foreach($rows as $row) {
-            return new Etnia($row['tipoEtnia']);
+        if($rows == null){
+            $etnia = null;
+        }else{
+            foreach($rows as $row) {
+                $etnia = new Etnia($row['tipoEtnia']);
+            }
         }
+        $this->close();
+        return $etnia;
     }
 
 }

@@ -3,6 +3,7 @@ include_once 'Dao.php';
 class EgressoDao extends Dao{
 
     public function insertDadosEgressos($idPessoa, $anoIngresso, $anoFormatura){
+        $this->getConection();
         $sql = "INSERT INTO egresso(idPessoa, anoIngresso, anoFormatura) VALUES(?, ?, ?)";
         $this->setParams($idPessoa);
         $this->setParams($anoIngresso);
@@ -16,6 +17,7 @@ class EgressoDao extends Dao{
     }
 
     public function searchGraduacaoByCodigo($codigo){
+        $this->getConection();
         $sql = "SELECT * FROM graduacao WHERE codigo_sigaa = ?";
         $this->setParams($codigo);
         $result = $this->execute($sql);
@@ -24,6 +26,7 @@ class EgressoDao extends Dao{
     }
 
     public function insertGraduacao($idCurso, $codCurso, $idInstituto, $idCampus){
+        $this->getConection();
         $sql = "INSERT INTO graduacao(codigo_sigaa, idCampus, idCurso, idInstituto) VALUES(?, ?, ?, ?)";
         $this->setParams($codCurso);
         $this->setParams($idCampus);
@@ -37,6 +40,7 @@ class EgressoDao extends Dao{
     }
 
     public function insertGraduacaoEgresso($idEgresso, $idGraduacao){
+        $this->getConection();
         $sql = "INSERT INTO egresso_graduacao(idEgresso, idGraduacao) VALUES(?, ?)";
         $this->setParams($idEgresso);
         $this->setParams($idGraduacao);
@@ -48,6 +52,7 @@ class EgressoDao extends Dao{
     }
 
     public function getDadosEgresso($idPessoa){
+        $this->getConection();
         $sql = "SELECT idEgresso, anoIngresso, anoFormatura, nome, cpf, dataNascimento FROM egresso INNER JOIN pessoa ON egresso.idPessoa = pessoa.idPessoa WHERE egresso.idPessoa = ?";
         $this->setParams($idPessoa);
         $this->execute($sql);
@@ -55,31 +60,61 @@ class EgressoDao extends Dao{
         $etniaDao = new EtniaDao();
         $etnia = $etniaDao->getEtniaPessoa($idPessoa);
         $rows = $this->get($result);
-        foreach($rows as $row) {
-            $data = DateTime::createFromFormat('Y-m-d', $row['dataNascimento']);
-            $egresso = new Egresso($row['nome'], $row['cpf'], $data, $etnia, $row['anoIngresso'], $row['anoFormatura']);
-            $egresso->setIdEgresso($row['idEgresso']);
-            $egresso->setIdPessoa($idPessoa);
+        if($rows == null){
+            $egresso = null;
+        }else{
+            foreach($rows as $row) {
+                $data = DateTime::createFromFormat('Y-m-d', $row['dataNascimento']);
+                $egresso = new Egresso($row['nome'], $row['cpf'], $data, $etnia, $row['anoIngresso'], $row['anoFormatura']);
+                $egresso->setIdEgresso($row['idEgresso']);
+                $egresso->setIdPessoa($idPessoa);
+            }
         }
+        $this->close();
         return $egresso;
     }
 
     public function getGraduacaoByCodigo($idEgresso){
+        $this->getConection();
         $sql = "SELECT idGraduacao FROM egresso_graduacao WHERE idEgresso = ?";
         $this->setParams($idEgresso);
         $this->execute($sql);
         $result = $this->stmt->get_result();
         $idGraduacao = $this->getId($result);
+        $this->close();
         return $idGraduacao;
     }
 
     public function egressoByCpf($cpf){
+        $this->getConection();
         $sql = "SELECT idPessoa FROM pessoa WHERE cpf = ?";
         $this->setParams($cpf);
         $this->execute($sql);
         $result = $this->stmt->get_result();
         $idEgresso = $this->getId($result);
+        $this->close();
         return $idEgresso;
+    }
+
+    public function cadastraAllInformacoes($egresso){
+        $egressoController = new EgressoController();
+        $ingressoController = new IngressoController();
+        $cotaController = new CotaController();
+        $this->getConection();
+        try{
+             $this->beginTransaction();
+             $idPessoa = $egressoController->cadastraPessoa($egresso);
+             $idEgresso = $this->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
+             $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
+             $cotaController->cadastraCota($idEgresso, FromJson::getCota());
+             $egressoController->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
+             $this->commit();
+         }catch(Exception $e){
+             $this->rollback();
+             // Lançar exceção personalizada depois
+             return null;
+         }
+        return $idPessoa;
     }
 }
 
