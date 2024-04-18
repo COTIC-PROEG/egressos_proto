@@ -23,25 +23,27 @@ class EgressoController extends PessoaController{
                     return;
                 }
                 $idPessoa = $this->verificaCadastroByCpf($cpf);
-                if($idPessoa != null){
-                    $this->acessarFormulario($idPessoa);
-                }else{
+                if($idPessoa == null){
                     if($status == 200){
-                        $egresso = FromJson::getEgressoFromJson();
-                        $egressoDao = new EgressoDao();
-                        $ingressoController = new IngressoController();
-                        $cotaController = new CotaController();
-                        $idPessoa = $this->cadastraPessoa($egresso);
-                        $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
-                        $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
-                        $cotaController->cadastraCota($idEgresso, FromJson::getCota());
-                        $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
-                        $this->acessarFormulario($idPessoa);
+                        $idPessoa = $this->cadastraInformacoes();
                     }
                 }
+                $this->acessarFormulario($idPessoa);
             }
         }
+    }
 
+    private function cadastraInformacoes(){
+        $egresso = FromJson::getEgressoFromJson();
+        $egressoDao = new EgressoDao();
+        $ingressoController = new IngressoController();
+        $cotaController = new CotaController();
+        $idPessoa = $this->cadastraPessoa($egresso);
+        $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
+        $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
+        $cotaController->cadastraCota($idEgresso, FromJson::getCota());
+        $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
+        return $idPessoa;
     }
 
     public function cadastraCursoEgresso($idEgresso, $curso, $codCurso, $instituto, $campus){
