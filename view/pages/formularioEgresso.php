@@ -11,6 +11,9 @@ $egresso = $egressoController->carregaDadosEgresso();
 $graduacao = $egressoController->getGraduacao($egresso->getIdEgresso());
 $generos = $generoController->getAllGeneros();
 $pos = $graduacaoController->getAllPosGraduacao();
+
+$dataAtual = new DateTime();
+$idade = $dataAtual->diff($egresso->getDataNascimento())->format('%y'); 
 ?>
 
 <!DOCTYPE html>
@@ -49,8 +52,8 @@ $pos = $graduacaoController->getAllPosGraduacao();
 					<legend><strong>DADOS PESSOAIS</strong></legend>
 					<div class="dados">
 						<p>Nome: <span><?php echo $egresso->getNome(); ?></span></p>
-						<p>Idade: <span><?php echo $egresso->getIda ?></span></p>
-						<p>Faixa Etária: <span><?php echo 'faixaEtaria';?></span></p>
+						<p>Idade: <span><?php echo $idade ?></span></p>
+						<p>Faixa Etária: <span><?php echo $egresso->getFaixaEtaria();?></span></p>
 						<p>Email: <span><input size=26 placeholder="Digite seu e-mail" type="email" id="email" name="email" required></span></p>
 					</div>
 					<!-- --------------------------------------------------------------- -->

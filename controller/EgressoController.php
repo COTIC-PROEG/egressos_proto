@@ -87,19 +87,6 @@ class EgressoController extends PessoaController{
         $idGraduacao = $egressoDao->getGraduacaoByCodigo($idEgresso);
         return $graduacaoController->getDadosGraduacao($idGraduacao);
     }
-
-    public function verificarFaixaEtaria($idade = NULL){
-        if ($idade <= 22) {
-            $faixaEtaria = 'Até 22 anos';
-        } elseif ($idade >= 23 && $idade <= 29) {
-            $faixaEtaria = 'De 23 a 29 anos';
-        } elseif ($idade >= 30 && $idade <= 36) {
-            $faixaEtaria = 'De 30 a 36 anos';
-        } else {
-            $faixaEtaria = 'Acima de 36 anos';
-        }
-        return $faixaEtaria;
-    }
 }
 
 ?>

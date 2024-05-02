@@ -9,11 +9,26 @@ class PessoaController{
     public function cadastraPessoa($pessoa){
         $etniaController = new EtniaController();
         $pessoa->setCpf($this->formataCPF($pessoa->getCpf()));
-        //$pessoa->setDataNascimento($this->formataDataParaSql($pessoa->getDataNascimento()));
         $pessoaDao = new PessoaDao();
         $idNovaPessoa = $pessoaDao->insertPessoa($pessoa);
         $etniaController->cadastraEtniaPessoa($idNovaPessoa, $pessoa->getEtnia());
+        $idFaixaEtaria = $this->verificarFaixaEtaria($pessoa->getDataNascimento());
+        $pessoaDao->insertFaixaEtariaPessoa($idNovaPessoa, $idFaixaEtaria);
         return $idNovaPessoa;
+    }
+
+    private function verificarFaixaEtaria($dataNascimento){
+        $dataAtual = new DateTime();
+        $idade = $dataAtual->diff($dataNascimento)->format('%y'); 
+        if ($idade <= 22) {
+            return 1;
+        } elseif ($idade <= 29) {
+            return 2;
+        } elseif ($idade <= 36) {
+            return 3;
+        } else {
+            return 4;
+        }
     }
 
     private function formataCPF(string $cpf){

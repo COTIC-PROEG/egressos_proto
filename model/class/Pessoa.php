@@ -8,6 +8,7 @@ class Pessoa{
     private DateTime $dataNascimento;
     private Genero $genero;
     private Etnia $etnia;
+    private String $faixaEtaria;
 
     function __construct($nome, $cpf, $dataNascimento, $etnia) {
         $this->nome = $nome;
@@ -70,6 +71,14 @@ class Pessoa{
 
     public function setGenero($genero): void{
         $this->genero = $genero;
+    }
+
+    public function getFaixaEtaria(): String{
+        return $this->faixaEtaria;
+    }
+
+    public function setFaixaEtaria($faixaEtaria): void{
+        $this->faixaEtaria = $faixaEtaria;
     }
 
 }

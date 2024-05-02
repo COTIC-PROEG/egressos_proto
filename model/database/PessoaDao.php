@@ -16,6 +16,15 @@ class PessoaDao extends Dao{
             return $this->getStmtId();   
         }
     }
+
+    public function insertFaixaEtariaPessoa($idNovaPessoa, $idFaixaEtaria){
+        $this->getConection();
+        $sql = "INSERT INTO pessoa_faixa_etaria(idPessoa, idFaixaEtaria) VALUES(?, ?)";
+        $this->setParams($idNovaPessoa);
+        $this->setParams($idFaixaEtaria);
+        $this->execute($sql);
+        return $this->getStmtId();
+    }
 }
 
 ?>

@@ -59,6 +59,7 @@ class EgressoDao extends Dao{
         $result = $this->stmt->get_result();
         $etniaDao = new EtniaDao();
         $etnia = $etniaDao->getEtniaPessoa($idPessoa);
+        $faixaEtaria = $this->getFaixaEtaria($idPessoa);
         $rows = $this->get($result);
         if($rows == null){
             $egresso = null;
@@ -70,8 +71,25 @@ class EgressoDao extends Dao{
                 $egresso->setIdPessoa($idPessoa);
             }
         }
+        $egresso->setFaixaEtaria($faixaEtaria);
         $this->close();
         return $egresso;
+    }
+
+    private function getFaixaEtaria($idPessoa){
+        $sql = "SELECT faixa FROM faixa_etaria INNER JOIN pessoa_faixa_etaria ON faixa_etaria.idFaixaEtaria = pessoa_faixa_etaria.idFaixaEtaria WHERE pessoa_faixa_etaria.idPessoa = ?";
+        $this->setParams($idPessoa);
+        $this->execute($sql);
+        $result = $this->stmt->get_result();
+        $rows = $this->get($result);
+        if($rows == null){
+            $faixa = null;
+        }else{
+            foreach($rows as $row) {
+                $faixa = $row['faixa'];
+            }
+        }
+        return $faixa;
     }
 
     public function getGraduacaoByCodigo($idEgresso){
