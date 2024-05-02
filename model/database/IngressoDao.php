@@ -2,6 +2,7 @@
 include_once 'Dao.php';
 class IngressoDao extends Dao{
     public function getFormaIngresso($tipoIngresso){
+        $this->getConection();
         $sql = "SELECT idIngresso FROM ingresso WHERE forma = ?";
         $this->setParams($tipoIngresso);
         $this->execute($sql);
@@ -10,6 +11,7 @@ class IngressoDao extends Dao{
     }
 
     public function insertFormaIngresso($tipoIngresso){
+        $this->getConection();
         $sql = "INSERT INTO ingresso(forma) VALUES(?)";
         $this->setParams($tipoIngresso);
         $this->execute($sql);
@@ -17,6 +19,7 @@ class IngressoDao extends Dao{
     }
 
     public function insertEgressoFormaIngresso($idEgresso, $tipoIngresso){
+        $this->getConection();
         $sql = "INSERT INTO egresso_ingresso(idEgresso, idIngresso) VALUES(?, ?)";
         $this->setParams($idEgresso);
         $this->setParams($tipoIngresso);
@@ -25,7 +28,7 @@ class IngressoDao extends Dao{
     }
 
     public function getFormaIngressoById($idEgresso){
-        //$this->getConection();
+        $this->getConection();
         $sql = "SELECT forma FROM ingresso INNER JOIN egresso_ingresso ON egresso_ingresso.idIngresso = ingresso.idIngresso WHERE idEgresso = ?";
         $this->setParams($idEgresso);
         $this->execute($sql);

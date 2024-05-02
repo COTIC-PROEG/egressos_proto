@@ -3,6 +3,7 @@
 class CampusDao extends Dao{
 
     public function getCampusByName($campus){
+        $this->getConection();
         $sql = "SELECT idCampus FROM campus WHERE nome = ?";
         $this->setParams($campus);
         $this->execute($sql);
@@ -11,6 +12,7 @@ class CampusDao extends Dao{
     }
 
     public function insertCampus($campus){
+        $this->getConection();
         $sql = "INSERT INTO campus(nome) VALUES(?)";
         $this->setParams($campus);
         $this->execute($sql);

@@ -5,7 +5,6 @@ class Egresso extends Pessoa{
     private string $anoIngresso;
     private string $anoFormatura;
     private Ingresso $ingresso;
-    private PosGraduacao $posGraduacao;
     private Cota $cota;
     private array $bolsas;
     private array $atividades;
@@ -46,10 +45,6 @@ class Egresso extends Pessoa{
 
     public function getAtividades(): array{
         return $this->atividades;
-    }
-
-    public function getPosGraduacao(): PosGraduacao{
-        return $this->posGraduacao;
     }
 
     public function getCota(): Cota{
