@@ -14,7 +14,7 @@ class EgressoController extends PessoaController{
     public function cadastrarEgresso(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(isset($_POST['cpf']) && isset($_POST['dataNascimento'])){
-                $cpf = $_POST['cpf'];
+                $cpf = trim($_POST['cpf']);
                 $dataNascimento = $_POST['dataNascimento'];
                 $status = FromJson::getUltimaMatricula($cpf);
                 $dataNascimentoSagitta = FromJson::stringDataNascimento();
@@ -37,13 +37,6 @@ class EgressoController extends PessoaController{
         $egresso = FromJson::getEgressoFromJson();
         $egressoDao = new EgressoDao();
         $idPessoa = $egressoDao->cadastraAllInformacoes($egresso);
-        // $ingressoController = new IngressoController();
-        // $cotaController = new CotaController();
-        // $idPessoa = $this->cadastraPessoa($egresso);
-        // $idEgresso = $egressoDao->insertDadosEgressos($idPessoa, $egresso->getAnoIngresso(), $egresso->getAnoFormatura());
-        // $ingressoController->cadastraFormaIngresso($idEgresso, FromJson::getFormaIngresso());
-        // $cotaController->cadastraCota($idEgresso, FromJson::getCota());
-        // $this->cadastraCursoEgresso($idEgresso, FromJson::getCurso(), FromJson::getCodigoCurso(), FromJson::getUnidadeAcademica(), FromJson::getCampus());
         return $idPessoa;
     }
 
@@ -93,6 +86,19 @@ class EgressoController extends PessoaController{
         $graduacaoController = new GraduacaoController();
         $idGraduacao = $egressoDao->getGraduacaoByCodigo($idEgresso);
         return $graduacaoController->getDadosGraduacao($idGraduacao);
+    }
+
+    public function verificarFaixaEtaria($idade = NULL){
+        if ($idade <= 22) {
+            $faixaEtaria = 'Até 22 anos';
+        } elseif ($idade >= 23 && $idade <= 29) {
+            $faixaEtaria = 'De 23 a 29 anos';
+        } elseif ($idade >= 30 && $idade <= 36) {
+            $faixaEtaria = 'De 30 a 36 anos';
+        } else {
+            $faixaEtaria = 'Acima de 36 anos';
+        }
+        return $faixaEtaria;
     }
 }
 

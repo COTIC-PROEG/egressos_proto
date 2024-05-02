@@ -112,7 +112,6 @@ class EgressoDao extends Dao{
          }catch(Exception $e){
              $this->rollback();
              // Lançar exceção personalizada depois
-             return null;
          }
         return $idPessoa;
     }
