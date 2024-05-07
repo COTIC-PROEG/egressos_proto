@@ -6,26 +6,20 @@ include '../../model/class/Cota.php';
 require_once '../../vendor/autoload.php';
 
 use GuzzleHttp\Client;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(dirname(__FILE__, 3));
+$dotenv->safeLoad();
 
 class FromJson{
-    // private string $ultimaMatricula;
-    // private string $nome;
-    // private string $cpf;
-    // private string $raca;
-    // private int $anoIngresso;
-    // private int $periodoingresso;
-    // private string $conta;
-    // private string $dataFormatura;
-    // private int $anoFormatura;
-    // private int $periodoFormatura;
-    // private string $curso;
-    // private string $unidadeAcademica;
-    // private string $campus;
 
     private static $ultimaMatricula = null;
+    
 
     public static function getUltimaMatricula($cpf){
-        $url = 'https://sagitta.ufpa.br/sagitta/ws/consultaegresso/'.$cpf.'?login=diegolisboa';
+        $base_url = $_ENV['BASE_URL'];
+        $auth =  $_ENV['AUTH'];
+        $url = $base_url.$cpf.$auth;
         
         $client = new Client();
         $response = $client->request('GET',$url);
