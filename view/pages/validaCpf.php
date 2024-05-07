@@ -34,7 +34,7 @@ $pessoaController->cadastrarEgresso();
         <form method="POST" name="form" action="validaCpf.php">
                 <div id="borda">
                     <h2><strong>VERIFICAR CREDENCIAIS</strong></h2>
-                    <div class="elements" >
+                    <div class="elements">
                         <p>CPF: 
                         <input class="cpf" placeholder=" Informe seu CPF (sem pontos ou traços)" type= "text" id="cpf" name="cpf" type="text" size="18" alt="  Informe seu CPF" title="CPF"><br></p>                        
                         <p>Data de Nascimento:

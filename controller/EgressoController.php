@@ -8,6 +8,12 @@ include_once 'InstitutoController.php';
 include_once 'CampusController.php';
 include_once 'GraduacaoController.php';
 include_once 'CotaController.php';
+require_once '../../vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(dirname(__FILE__, 3));
+$dotenv->safeLoad();
 
 
 class EgressoController extends PessoaController{
@@ -58,7 +64,8 @@ class EgressoController extends PessoaController{
     }
 
     public function carregaDadosEgresso(){
-        $idPessoa = $_GET['id'];
+        $id = $_GET['id'];
+        $idPessoa = $this->desmascararId($id);
         $egressoDao = new EgressoDao();
         $ingressoController = new IngressoController();
         $cotaController = new CotaController();
@@ -75,8 +82,9 @@ class EgressoController extends PessoaController{
     }
 
     public function acessarFormulario($idPessoa){
+        $idCriptografado = $this->mascararId($idPessoa);
         $newURL = 'http://localhost/egressos_web/view/pages/formularioEgresso.';
-        header("Location: ".$newURL."php?id=$idPessoa");
+        header("Location: ".$newURL."php?id=$idCriptografado");
         die();
         
     }
@@ -86,6 +94,23 @@ class EgressoController extends PessoaController{
         $graduacaoController = new GraduacaoController();
         $idGraduacao = $egressoDao->getGraduacaoByCodigo($idEgresso);
         return $graduacaoController->getDadosGraduacao($idGraduacao);
+    }
+
+    private function mascararId($id){
+        $secret_key = $_ENV['SECRET_KEY'];
+        $init_vector = $_ENV['INIT_VECTOR'];
+        $cipher = "aes-256-cbc";
+        $idCriptografado = openssl_encrypt($id, $cipher, $secret_key, 0, $init_vector);
+        return base64_encode($idCriptografado);
+    }
+
+    private function desmascararId($idCriptografado){
+        $secret_key = $_ENV['SECRET_KEY'];
+        $init_vector = $_ENV['INIT_VECTOR'];
+        $cipher = "aes-256-cbc";
+        $idCriptografado = base64_decode($idCriptografado);
+        $id = openssl_decrypt($idCriptografado, $cipher, $secret_key, 0, $init_vector);
+        return $id;
     }
 }
 

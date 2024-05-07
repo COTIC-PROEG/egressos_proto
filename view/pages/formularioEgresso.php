@@ -13,7 +13,7 @@ $generos = $generoController->getAllGeneros();
 $pos = $graduacaoController->getAllPosGraduacao();
 
 $dataAtual = new DateTime();
-$idade = $dataAtual->diff($egresso->getDataNascimento())->format('%y'); 
+$idade = $dataAtual->diff($egresso->getDataNascimento())->format('%y');
 ?>
 
 <!DOCTYPE html>
